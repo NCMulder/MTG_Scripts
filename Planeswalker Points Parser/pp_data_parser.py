@@ -43,6 +43,16 @@ def getTxtData(URI):
     return records
 
 def getWebData(URL):
+    username_name = "username"
+    password_name = "password"
+    DCI_number_name = "DCINumber"
+
+    session_requests = requests.session()
+    name = "Nielsch"
+    password = "P00chy3n4!"
+    # name = input("Wizards Username: ")
+    # password = input("Password")
+
     page = requests.get(URL)
     tree = html.fromstring(page.content)
 
