@@ -1,5 +1,7 @@
 import re
 import sqlite3
+import matplotlib.pyplot as plt
+import pandas as pd
 
 
 class PlaneswalkerPointsParser():
@@ -129,12 +131,56 @@ class PlaneswalkerPointsParser():
         with open(path) as points_file:
             return points_file.read()
 
+    def write_all_results(self, path):
+        base_query = 'SELECT result, COUNT(result) AS Total FROM matches WHERE opponent=="{0}" GROUP BY result'
+
+        cs = self.get_db_cursor(path)
+
+        opps = cs.execute('SELECT DISTINCT opponent FROM matches')
+
+        table = []
+        rowlabels = []
+
+        for opponent_row in opps.fetchall():
+            opponent = opponent_row[0].replace('\n', ', ')
+            results = cs.execute(base_query.format(opponent)).fetchall()
+
+            if not results:
+                continue
+
+            losses = 0
+            wins = 0
+            draws = 0
+
+            for result_type, result_count in results:
+                if result_type == 'Loss':
+                    losses = result_count
+                elif result_type == 'Win':
+                    wins = result_count
+                elif result_type == 'Draw':
+                    draws = result_count
+            table.append([wins, losses, draws])
+            rowlabels.append(opponent)
+            
+            print(f'{opponent}: {results}')
+        
+        fig, ax = plt.subplots()
+        fig.patch.set_visible(False)
+        ax.axis('off')
+        ax.axis('tight')
+
+        df = pd.DataFrame(table, columns=['Wins', 'Losses', 'Draws'])
+
+        ax.table(cellText=df.values, rowLabels=rowlabels, colLabels=df.columns, loc='center')
+        plt.show()
+
 
 if __name__ == '__main__':
     pwp_parser = PlaneswalkerPointsParser()
-    data = pwp_parser.read_points_from_file('pwp_all.txt')
+    data = pwp_parser.read_points_from_file('20200205.txt')
     array = pwp_parser.get_points_array(data)
 
     pwp_parser.setup_db('niels_points.db')
 
     pwp_parser.parse_points_array(array)
+    pwp_parser.write_all_results('niels_points.db')

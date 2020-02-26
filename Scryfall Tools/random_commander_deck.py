@@ -9,6 +9,8 @@ try:
 except ImportError:
     from bs4 import BeautifulSoup
 
+from selenium import webdriver
+
 
 def get_EDHREC_average_deck(commander):
     '''Get the average decklist for a commander from EDHREC
@@ -21,17 +23,17 @@ def get_EDHREC_average_deck(commander):
         name = commander['card_faces'][0]['name']
     else:
         name = commander['name']
-    url = f'https://edhrec.com/decks/{name}'.replace(' ', '-')
-    random_deck_page = requests.get(url)
-    parsed_html = BeautifulSoup(random_deck_page.text, features="html.parser")
 
-    decklist_div = parsed_html.body.find('div', attrs={'class': 'well'})
+    basic_name = re.sub(r'[^a-zA-Z ]', '', name)
+    hyphen_name = re.sub(r' ', '-', basic_name)
+    url = f'https://edhrec-json.s3.amazonaws.com/en/decks/{hyphen_name.lower()}.json'
 
-    if not decklist_div:
-        print('Could not find an average deck list for', commander['name'])
-        return None
+    random_deck_resp = requests.get(url)
+    random_deck_json = random_deck_resp.json()
+    list_ugly = random_deck_json['description']
+    list_cards = list_ugly.split('</a>')[2]
 
-    decklist_raw = decklist_div.get_text(separator='\n').split('\n')
+    decklist_raw = list_cards.split('\n')
     pattern = re.compile(r'(\d*) (.*)$')
     decklist_filtered = {
         match.group(2): int(match.group(1))

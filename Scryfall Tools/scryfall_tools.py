@@ -69,7 +69,12 @@ def search_for_cards(query):
     if cards['object'] == 'error':
         return None
     else:
-        return cards['data']
+        stored = []
+        stored.append(cards['data'])
+        while cards['has_more']:
+            cards = requests.get(cards['next_page']).json()
+            stored.append(cards['data'])
+        return [card for lst in stored for card in lst]
 
 
 # Returns a dictionary of identifiers for posting to Scryfall
