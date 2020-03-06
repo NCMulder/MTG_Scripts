@@ -77,6 +77,7 @@ def collect_ids(deck):
         else:
             deck_as_ids[card_id] += 1
 
+    print(deck_as_ids)
     return deck_as_ids
 
 
@@ -112,9 +113,13 @@ def transform_decks(decks):
         tokens.append(deck_tokens)
         dfcs.append(deck_dfcs)
 
+    print([card['name'] for deck in decks for card in deck])
     main_decks_as_ids = [collect_ids(deck) for deck in decks]
-    print(list(card['name'] for card in deck for deck in decks))
+
+    print([card['name'] for deck in tokens for card in deck])
     token_decks_as_ids = [collect_ids(deck) for deck in tokens]
+    
+    print([card['name'] for deck in dfcs for card in deck])
     dfc_decks_as_ids = [collect_ids(deck) for deck in dfcs]
 
     return main_decks_as_ids, token_decks_as_ids, dfc_decks_as_ids
@@ -129,7 +134,7 @@ def create_deck_image_containers(card_size):
         sf_images.append((Image.new('RGB',
                                     [i * 5 for i in card_size])))
     if image_rest > 0:
-        rows = int((image_rest + 1) / 5) + 1
+        rows = int((image_rest) / 5) + 1
         sf_images.append(Image.new('RGB',
                                    [card_size[0] * 5, card_size[1] * rows]))
 
@@ -274,9 +279,10 @@ def create_deck_jsons(decks, sf_urls, df_urls, path, name):
     df_customdeck = {
         i + 1: {
             "NumWidth": 5,
-            "NumHeight": 5 if i < df_pages else last_rows,
-            "FaceURL": df_urls[i],
-            "BackURL": df_urls[i + 1]
+            "NumHeight": 5 if i + 1 < df_pages else last_rows,
+            "UniqueBack": True,
+            "FaceURL": df_urls[i * 2],
+            "BackURL": df_urls[i * 2 + 1]
         }
         for i in range(int(len(df_urls) / 2))
     }
@@ -287,7 +293,7 @@ def create_deck_jsons(decks, sf_urls, df_urls, path, name):
             continue
         main_customdeck[len(main_customdeck) + 1] = {
             "NumWidth": 5,
-            "NumHeight": 5 if i < df_pages else last_rows,
+            "NumHeight": 5 if i + 1 < df_pages else last_rows,
             "FaceURL": df_url,
             "BackURL": "https://deckmaster.info/"
                        "images/cards/1E/-938-hr.jpg"
@@ -296,6 +302,8 @@ def create_deck_jsons(decks, sf_urls, df_urls, path, name):
     for i, (deck_name, deck, tokens, dfcs) in enumerate(decks):
         # The main deck
         if deck:
+            print(deck.items())
+            print(dfcs.items())
             deck_container = {}
             deck_container['Transform'] = {
                 "posX": i * 3, "posY": 1.0, "posZ": -0.0,
@@ -314,7 +322,7 @@ def create_deck_jsons(decks, sf_urls, df_urls, path, name):
                 get_contained_object(df_unique_cards[card_id]['name'], card_id)
                 for card_id, amount in dfcs.items() for i in range(amount)
             ]
-            deck_container['DeckIDs'] += [card_id for card_id, amount in dfcs.items() for i in range(amount)]
+            deck_container['DeckIDs'] += [card_id + 100 * (int(len(deck) / 24) + 1) for card_id, amount in dfcs.items() for i in range(amount)]
 
             base['ObjectStates'] += [deck_container]
 
@@ -344,14 +352,22 @@ def create_deck_jsons(decks, sf_urls, df_urls, path, name):
                 "rotX": 0, "rotY": 180, "rotZ": 0,
                 "scaleX": 1, "scaleY": 1, "scaleZ": 1
             }
-            dfc_deck['Name'] = 'DeckCustom'
-            dfc_deck['Nickname'] = f'{deck_name} [dfc]'
-            dfc_deck['CustomDeck'] = df_customdeck
-            dfc_deck['ContainedObjects'] = [
-                get_contained_object(df_unique_cards[card_id]['name'], card_id)
-                for card_id, amount in dfcs.items() for i in range(amount)
-            ]
-            dfc_deck['DeckIDs'] = [card_id for card_id, amount in dfcs.items() for i in range(amount)]
+            if len(dfcs) == 1:
+                dfc = list(dfcs.keys())[0]
+                dfc_deck['Name'] = 'Card'
+                dfc_deck['Nickname'] = df_unique_cards[dfc]['name']
+                dfc_deck['CardID'] = 100
+                dfc_deck['CustomDeck'] = df_customdeck
+            else:
+                dfc_deck['Name'] = 'DeckCustom'
+                dfc_deck['Nickname'] = f'{deck_name} [dfc]'
+                dfc_deck['CustomDeck'] = df_customdeck
+                dfc_deck['ContainedObjects'] = [
+                    get_contained_object(df_unique_cards[card_id]['name'], card_id)
+                    for card_id, amount in dfcs.items() for i in range(amount)
+                ]
+                dfc_deck['DeckIDs'] = [card_id for card_id, amount in dfcs.items() for i in range(amount)]
+
             base['ObjectStates'] += [dfc_deck]
 
     json_path = Path(path or Path().absolute(),
@@ -365,6 +381,7 @@ def create_TTS_MTG_decks(decks, path='',
     print("Gathering unique cards...")
     mains_as_ids, tokens_as_ids, dfcs_as_ids = transform_decks(decks.values())
     print(mains_as_ids)
+    print(dfcs_as_ids)
 
     print("Creating deck images...")
     sf_urls, df_urls = create_deck_images(card_size_text)

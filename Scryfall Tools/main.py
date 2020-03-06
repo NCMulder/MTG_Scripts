@@ -21,9 +21,11 @@ def main(mode, output_path, query='', size='normal', set_code='ISD'):
             verbose=True,
             q=query
         )
+        if not decklist:
+            return
         decks[deckname] = decklist
     elif mode == 'decklist':
-        decklist_path = "C:\\Users\\niels\\Desktop\\emry pioneer.txt"
+        decklist_path = "C:\\Users\\niels\\Desktop\\(EDH) Teshar.txt"
         with open(decklist_path, mode='r') as decklist_file:
             # TODO: Make this its own file
             # Handle sideboards, sets
