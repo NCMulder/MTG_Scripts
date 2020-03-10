@@ -226,10 +226,13 @@ def save_deck_images(images):
     for i, image in enumerate(images):
         image_bytes = BytesIO()
         image.save(image_bytes, format='png')
-        urls.append(dropbox_uploader.upload_to_dropbox(
+        dropbox_url = dropbox_uploader.upload_to_dropbox(
             image_bytes.getvalue(),
             f'TTS_{datetime.now():%Y-%m-%d-%H_%M_%S}.png'
-        ))
+        )
+        if not dropbox_url:
+            return []
+        urls.append(dropbox_url)
 
     return urls
 
@@ -389,6 +392,10 @@ def create_TTS_MTG_decks(decks, path='',
 
     print("Creating deck images...")
     sf_urls, df_urls = create_deck_images(card_size_text)
+
+    if not sf_urls or not df_urls:
+        print("Something went wrong with uploading the deck images.")
+        return
 
     create_deck_jsons(
         zip([deck for deck in decks],
