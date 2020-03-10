@@ -92,12 +92,12 @@ def transform_decks(decks):
                     if (related_entry['component'] == 'token' or
                             related_entry['component'] == 'combo_piece' and
                             'Emblem' in related_entry['name']):
-                        deck_tokens.append(
-                            scryfall_tools.get_card(
-                                '',
-                                uri=related_entry['uri']
-                            )
+                        token = scryfall_tools.get_card(
+                            '',
+                            uri=related_entry['uri']
                         )
+                        if token not in deck_tokens:
+                            deck_tokens.append(token)
                     if related_entry['component'] == 'meld_result':
                         deck_dfcs.append(
                             scryfall_tools.get_card(
