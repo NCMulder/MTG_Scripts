@@ -12,7 +12,9 @@ Now, the uploader should be functional.
 #### Functionality
 The main entry point for all functionality is `main.py`.
 Several modes can be specified with `-mode`:
+
 | Argument | Description |
+| -------- | ----------- |
 | `random-commander` | Grabs a random commander from Scryfall and gets the average decklist from EDHRec. The default mode. |
 | `decklist` | Gets a decklist from the specified location. Specify this location with the `-dl` argument.|
 | `sealed_pool` | Gets (a) sealed pool(s) from a specified set. WIP. |
