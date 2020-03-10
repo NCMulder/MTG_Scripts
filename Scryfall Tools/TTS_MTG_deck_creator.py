@@ -393,7 +393,7 @@ def create_TTS_MTG_decks(decks, path='',
     print("Creating deck images...")
     sf_urls, df_urls = create_deck_images(card_size_text)
 
-    if not sf_urls or not df_urls:
+    if not sf_urls and not df_urls:
         print("Something went wrong with uploading the deck images.")
         return
 
