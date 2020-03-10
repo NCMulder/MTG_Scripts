@@ -13,7 +13,7 @@ modes = [
 ]
 
 
-def main(mode, output_path, query='', size='normal', set_code='ISD'):
+def main(mode, output_path, query='', size='normal', set_code='ISD', decklist_path=''):
     decks = {}
 
     if mode == 'random_commander':
@@ -25,7 +25,9 @@ def main(mode, output_path, query='', size='normal', set_code='ISD'):
             return
         decks[deckname] = decklist
     elif mode == 'decklist':
-        decklist_path = "C:\\Users\\niels\\Desktop\\(EDH) Teshar.txt"
+        if not decklist_path:
+            print("Please provide a decklist path")
+            return
         with open(decklist_path, mode='r') as decklist_file:
             # TODO: Make this its own file
             # Handle sideboards, sets
@@ -71,6 +73,12 @@ if __name__ == "__main__":
         type=str
     )
     parser.add_argument(
+        '-dl',
+        help='Where to get the decklist to use',
+        default='',
+        type=str
+    )
+    parser.add_argument(
         '-q',
         help='Card image size',
         default='normal',
@@ -80,4 +88,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    main(mode=args.mode, output_path=args.out, query=args.query, size=args.q)
+    main(mode=args.mode, output_path=args.out, query=args.query, size=args.q, decklist_path=args.dl)
