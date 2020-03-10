@@ -99,13 +99,12 @@ def transform_decks(decks):
                         if token not in deck_tokens:
                             deck_tokens.append(token)
                     if related_entry['component'] == 'meld_result':
-                        deck_dfcs.append(
-                            scryfall_tools.get_card(
-                                '',
-                                uri=related_entry['uri']
-                            )
+                        meld_result = scryfall_tools.get_card(
+                            '',
+                            uri=related_entry['uri']
                         )
-                        deck.remove(card)
+                        if meld_result not in deck_tokens:
+                            deck_tokens.append(meld_result)
             if card['layout'] == 'transform':
                 deck_dfcs.append(card)
 
@@ -265,7 +264,7 @@ def create_deck_jsons(decks, sf_urls, df_urls, path, name):
             (i + 1) * 100 +  # Base count (left-topmost card)
             (23 if i < sf_pages else  # right-bottommost card for a full page
              (last_rows - 1) * 5 + (len(sf_card_ids) % 24) % 5 - 1)
-        ]['layout'] == 'token'
+        ]['layout'] in ['token', 'emblem', 'meld']
     }
 
     df_pages = int((len(df_card_ids)) / 24) + 1
