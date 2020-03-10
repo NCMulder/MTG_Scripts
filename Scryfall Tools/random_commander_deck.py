@@ -24,7 +24,7 @@ def get_EDHREC_average_deck(commander):
     else:
         name = commander['name']
 
-    basic_name = re.sub(r'[^a-zA-Z ]', '', name)
+    basic_name = re.sub(r'[^a-zA-Z\- ]', '', name)
     hyphen_name = re.sub(r' ', '-', basic_name)
     url = f'https://edhrec-json.s3.amazonaws.com/en/decks/{hyphen_name.lower()}.json'
 

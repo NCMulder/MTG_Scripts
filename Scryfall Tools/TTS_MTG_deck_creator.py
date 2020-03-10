@@ -14,20 +14,24 @@ from PIL import Image
 from pathlib import Path
 from random import randint
 
-# TODO: Improve ad backs for tokens
+# Cardback and ad cards taken from https://deckmaster.info,
+# backed up to dropbox for persistency and loading issues
+back_1_url = "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+back_2_url = "https://www.dropbox.com/s/ral1ldk9odsycqd/back_2.jpg?dl=1"
+
 ad_urls = [
-    # "https://deckmaster.info/images/cards/UST/-5522-hr.jpg",
-    # "https://deckmaster.info/images/cards/UST/-5523-hr.jpg",
-    # "https://deckmaster.info/images/cards/UST/-5524-hr.jpg",
-    # "https://deckmaster.info/images/cards/UST/-5525-hr.jpg",
-    # "https://deckmaster.info/images/cards/UST/-5526-hr.jpg",
-    # "https://deckmaster.info/images/cards/UST/-5527-hr.jpg",
-    "https://deckmaster.info/images/cards/UST/-5528-hr.jpg",
-    # "https://deckmaster.info/images/cards/UST/-5529-hr.jpg",
-    "https://deckmaster.info/images/cards/UST/-5530-hr.jpg",
-    # "https://deckmaster.info/images/cards/UST/-5531-hr.jpg",
-    "https://deckmaster.info/images/cards/UST/-5552-hr.jpg"
-    # "https://deckmaster.info/images/cards/UST/-5553-hr.jpg",
+    "https://www.dropbox.com/s/jbnpcn4xs14myot/token_1.jpg?dl=1",
+    "https://www.dropbox.com/s/7lvnf1z6paj6ds9/token_2.jpg?dl=1",
+    "https://www.dropbox.com/s/pb4um3zm56i2nuj/token_3.jpg?dl=1",
+    "https://www.dropbox.com/s/xx14lh7qty4x9a2/token_4.jpg?dl=1",
+    "https://www.dropbox.com/s/p512mi23b3ptb4h/token_5.jpg?dl=1",
+    "https://www.dropbox.com/s/w0ro7596gp5kk05/token_6.jpg?dl=1",
+    "https://www.dropbox.com/s/dobryp84n34tjha/token_7.jpg?dl=1",
+    "https://www.dropbox.com/s/a5sahr1jmuk51h8/token_8.jpg?dl=1",
+    "https://www.dropbox.com/s/ss0pch8fdnv3f5i/token_9.jpg?dl=1",
+    "https://www.dropbox.com/s/tw03iokf84smj74/token_10.jpg?dl=1",
+    "https://www.dropbox.com/s/xk4bo87zp4aoq59/token_11.jpg?dl=1",
+    "https://www.dropbox.com/s/ckvcduv45ha9e3x/token_12.jpg?dl=1"
 ]
 
 
@@ -44,6 +48,7 @@ def get_contained_object(nickname, card_id):
         "Transform": transform,
         "CardID": card_id
     }
+
 
 sf_unique_cards = {}
 sf_card_ids = {}
@@ -238,13 +243,13 @@ def create_deck_jsons(decks, sf_urls, df_urls, path, name):
     last_rows = int((len(sf_card_ids) % 24) / 5) + 1
     last_columns = 5 if last_rows > 1 else (len(sf_card_ids) % 24) % 5
 
+    back_url = back_1_url if randint(0, 1000) < 1000 else back_2_url
     main_customdeck = {
         i + 1: {
             "NumWidth": 5,
             "NumHeight": 5 if i < sf_pages else last_rows,
             "FaceURL": url,
-            "BackURL": "https://deckmaster.info/"
-                       "images/cards/1E/-938-hr.jpg"
+            "BackURL": back_url
         }
         for i, url in enumerate(sf_urls)
         # Ignore the page if it contains only tokens
@@ -289,8 +294,7 @@ def create_deck_jsons(decks, sf_urls, df_urls, path, name):
             "NumWidth": 5,
             "NumHeight": 5 if i + 1 < df_pages else last_rows,
             "FaceURL": df_url,
-            "BackURL": "https://deckmaster.info/"
-                       "images/cards/1E/-938-hr.jpg"
+            "BackURL": back_url
         }
 
     for i, (deck_name, deck, tokens, dfcs) in enumerate(decks):
@@ -309,14 +313,18 @@ def create_deck_jsons(decks, sf_urls, df_urls, path, name):
                 get_contained_object(sf_unique_cards[card_id]['name'], card_id)
                 for card_id, amount in deck.items() for i in range(amount)
             ]
-            deck_container['DeckIDs'] = [card_id for card_id, amount in deck.items() for i in range(amount)]
+            deck_container['DeckIDs'] = [
+                card_id for card_id, amount in deck.items() for i in range(amount)
+            ]
 
             df_offset = 100 * (int(len(deck) / 24) + 1)
             deck_container['ContainedObjects'] += [
                 get_contained_object(df_unique_cards[card_id]['name'], card_id + df_offset)
                 for card_id, amount in dfcs.items() for i in range(amount)
             ]
-            deck_container['DeckIDs'] += [card_id + df_offset for card_id, amount in dfcs.items() for i in range(amount)]
+            deck_container['DeckIDs'] += [
+                card_id + df_offset for card_id, amount in dfcs.items() for i in range(amount)
+            ]
 
             base['ObjectStates'] += [deck_container]
 
@@ -335,7 +343,9 @@ def create_deck_jsons(decks, sf_urls, df_urls, path, name):
                 get_contained_object(sf_unique_cards[card_id]['name'], card_id)
                 for card_id, amount in tokens.items() for i in range(amount)
             ]
-            token_deck['DeckIDs'] = [card_id for card_id, amount in tokens.items() for i in range(amount)]
+            token_deck['DeckIDs'] = [
+                card_id for card_id, amount in tokens.items() for i in range(amount)
+            ]
             base['ObjectStates'] += [token_deck]
 
         # The DFC container
@@ -360,7 +370,9 @@ def create_deck_jsons(decks, sf_urls, df_urls, path, name):
                     get_contained_object(df_unique_cards[card_id]['name'], card_id)
                     for card_id, amount in dfcs.items() for i in range(amount)
                 ]
-                dfc_deck['DeckIDs'] = [card_id for card_id, amount in dfcs.items() for i in range(amount)]
+                dfc_deck['DeckIDs'] = [
+                    card_id for card_id, amount in dfcs.items() for i in range(amount)
+                ]
 
             base['ObjectStates'] += [dfc_deck]
 
