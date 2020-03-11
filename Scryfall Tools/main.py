@@ -85,7 +85,16 @@ if __name__ == "__main__":
         choices=st.card_sizes,
         type=str
     )
+    parser.add_argument(
+        '-set',
+        help='Limited set',
+        default='ISD',
+        type=str
+    )
 
     args = parser.parse_args()
 
-    main(mode=args.mode, output_path=args.out, query=args.query, size=args.q, decklist_path=args.dl)
+    main(
+        mode=args.mode, output_path=args.out, query=args.query,
+        size=args.q, decklist_path=args.dl, set_code=args.set
+    )

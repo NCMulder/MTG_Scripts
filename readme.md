@@ -6,7 +6,7 @@ The bulk of the useful scripts are located in the [Scryfall Tools](Scryfall%20To
 This tool takes a decklist, generates and uploads the card images to your Dropbox, and creates a `.json` that Tabletop Simulator can read to import your deck.
 
 #### Setup
-First of all, if you want to run these scripts, you should get a [Dropbox API key](https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/), copy the `config_default.ini` file, rename it to `config.ini` and place your API key in there.
+First of all, if you want to run these scripts, you should get a [Dropbox API key](https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/) by creating an app choosing the Dropbox API, choosing "App Folder", and naming your app. Get your personal API key under `<appname> -> Settings -> OAuth2 -> Generated access token`, copy the `config_default.ini` file, rename it to `config.ini` and place your API key in there.
 Now, the uploader should be functional.
 
 #### Functionality
