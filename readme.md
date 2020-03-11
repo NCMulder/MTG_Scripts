@@ -2,7 +2,7 @@
 This is a collection of scripts I've been creating for Magic: The Gathering related tasks.
 
 ## Tabletop Simulator Deck Generator
-The bulk of the useful scripts are located in the [Scryfall Tools](Scryfall Tools) subfolder. I really should work on restructuring this whole thing but that's what you'll get for now.
+The bulk of the useful scripts are located in the [Scryfall Tools](Scryfall%20Tools) subfolder. I really should work on restructuring this whole thing but that's what you'll get for now.
 This tool takes a decklist, generates and uploads the card images to your Dropbox, and creates a `.json` that Tabletop Simulator can read to import your deck.
 
 #### Setup
@@ -18,11 +18,13 @@ Several modes can be specified with `-mode`:
 | `random-commander` | Grabs a random commander from Scryfall and gets the average decklist from EDHRec. The default mode. |
 | `decklist` | Gets a decklist from the specified location. Specify this location with the `-dl` argument.|
 | `sealed_pool` | Gets (a) sealed pool(s) from a specified set. WIP. |
-| `draft packs` | Gets (a) draft pack(s) from a specified set. WIP. |
+| `draft_packs` | Gets (a) draft pack(s) from a specified set. WIP. |
 
 The `-out` argument can be specified to point the `.json` file somewhere (maybe your TTS saved objects folder).
 
 The `-q` argument can be used to specify a card image size. Supported arguments are `png`, `border_crop`, `art_crop`, `large`, `normal` and `small`; larger sizes are nicer to look at but also take longer to generate and load, and will take up more space on Dropbox. Defaults to `normal` (488 by 680px).
+
+All other arguments are assumed to be extra query specifiers to get your random commander. For example, `main.py "o:instant OR o:sorcery"` gets a random commander with *instant* and/or *sorcery* in its oracle text. See [Scryfall](https://scryfall.com/docs/syntax) for a full syntax guide.
 
 ## Bugs, issues, suggestions
 If you encounter any bugs/issues/suggestions, either create an issue or send me a message on Discord?
