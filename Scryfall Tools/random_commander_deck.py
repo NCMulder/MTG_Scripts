@@ -52,7 +52,7 @@ def create_random_commander_deck(q='', verbose=False, deckname=''):
 
     query = q
     if 'is:commander' not in query:
-        query += '+' + 'is:commander'
+        query = f'({query}) AND is:commander'
 
     random_commander = scryfall_tools.get_random_card(q=query)
     if verbose:
