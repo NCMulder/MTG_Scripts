@@ -10,7 +10,7 @@ First of all, if you want to run these scripts, you should get a [Dropbox API ke
 Now, the uploader should be functional.
 
 #### Functionality
-The main entry point for all functionality is `main.py`.
+The main entry point for all functionality is `main.py`; `cd` into the Scryfall Tools folder and run `python main.py` from a command line with your favorite arguments.
 Several modes can be specified with `-mode`:
 
 | Argument | Description |
@@ -24,7 +24,7 @@ The `-out` argument can be specified to point the `.json` file somewhere (maybe 
 
 The `-q` argument can be used to specify a card image size. Supported arguments are `png`, `border_crop`, `art_crop`, `large`, `normal` and `small`; larger sizes are nicer to look at but also take longer to generate and load, and will take up more space on Dropbox. Defaults to `normal` (488 by 680px).
 
-All other arguments are assumed to be extra query specifiers to get your random commander. For example, `main.py "o:instant OR o:sorcery"` gets a random commander with *instant* and/or *sorcery* in its oracle text. See [Scryfall](https://scryfall.com/docs/syntax) for a full syntax guide.
+All other arguments are assumed to be extra query specifiers to get your random commander. For example, `python main.py "o:instant OR o:sorcery"` gets a random commander with *instant* and/or *sorcery* in its oracle text. See [Scryfall](https://scryfall.com/docs/syntax) for a full syntax guide.
 
 ## Bugs, issues, suggestions
 If you encounter any bugs/issues/suggestions, either create an issue or send me a message on Discord?
