@@ -1,6 +1,7 @@
 *.txt
 *.html
 *.ini
+!config_default.ini
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -103,3 +104,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# PyCharm
+*.idea/

@@ -1,9 +1,12 @@
-import TTS_MTG_deck_creator
-import random_commander_deck as rcd
-import limited_pools as lp
-import scryfall_tools as st
 import argparse
+import configparser
 import os
+
+from TTS_MTG_deck_creator import create_tts_mtg_decks
+from limited_pools import get_sealed_pool
+from random_commander_deck import create_random_commander_deck
+from scryfall_tools import get_collection
+from constants import CARD_SIZES
 
 modes = [
     'random_commander',
@@ -13,11 +16,14 @@ modes = [
 ]
 
 
-def main(mode, output_path, query='', size='normal', set_code='ISD', decklist_path=''):
+def main(
+        mode, output_path, size='normal',
+        query='', set_code=None, decklist_path=None
+):
     decks = {}
 
     if mode == 'random_commander':
-        decklist, deckname = rcd.create_random_commander_deck(
+        decklist, deckname = create_random_commander_deck(
             verbose=True,
             q=query
         )
@@ -26,63 +32,68 @@ def main(mode, output_path, query='', size='normal', set_code='ISD', decklist_pa
         decks[deckname] = decklist
     elif mode == 'decklist':
         if not decklist_path:
-            print("Please provide a decklist path")
-            return
+            raise TypeError('Please provide a decklist path')
         with open(decklist_path, mode='r') as decklist_file:
             # TODO: Make this its own file
             # Handle sideboards, sets
             deckname = os.path.splitext(os.path.basename(decklist_path))[0]
             decklist_array = decklist_file.readlines()
-            deck_dict = {' '.join(entry.split(' ')[1:]).strip():
-                         int(entry.split(' ')[0])
-                         for entry in decklist_array if entry.strip()}
-            decklist = st.get_collection(deck_dict)
+            # Flip decklist_array ['[amount] [cardname]']
+            # to {[cardname]: [amount]}
+            deck_dict = {
+                ' '.join(entry.split(' ')[1:]).strip(): int(entry.split(' ')[0])
+                for entry in decklist_array if entry.strip()
+            }
+            decklist = get_collection(deck_dict)
             decks[deckname] = decklist
 
     elif mode == 'sealed_pool':
-        decks = lp.get_sealed_pool(set_code=set_code)
+        decks = get_sealed_pool(set_code=set_code)
 
-    TTS_MTG_deck_creator.create_TTS_MTG_decks(
+    create_tts_mtg_decks(
         decks,
         output_path,
         card_size_text=size
     )
 
+
 if __name__ == "__main__":
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+
     parser = argparse.ArgumentParser(
-        description="Create the TTS files for an M:TG deck."
+        description='Create the TTS files for an M:TG deck.'
     )
     parser.add_argument(
-        '-mode',
+        '-m', '--mode',
         help='The mode to use for the program',
         default='random_commander',
         choices=modes,
         type=str
     )
     parser.add_argument(
-        'query',
+        '-o', '--out',
+        help='Absolute path of which directory to store the generated files',
+        default=config['Main'].get('default_output_path', ''),
+        type=str
+    )
+    parser.add_argument(
+        '-s', '--size',
+        help='Card image size',
+        default='normal',
+        choices=CARD_SIZES,
+        type=str
+    )
+    parser.add_argument(
+        '-q', '--query',
         help='Additional query parameters for selecting a random commander',
         nargs='?',
         default='',
         type=str
     )
     parser.add_argument(
-        '-out',
-        help='Where to store the generated files',
-        default='',
-        type=str
-    )
-    parser.add_argument(
-        '-dl',
-        help='Where to get the decklist to use',
-        default='',
-        type=str
-    )
-    parser.add_argument(
-        '-q',
-        help='Card image size',
-        default='normal',
-        choices=st.card_sizes,
+        '-dl', '--decklist',
+        help='URL of the decklist to retrieve',
         type=str
     )
     parser.add_argument(
@@ -95,6 +106,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(
-        mode=args.mode, output_path=args.out, query=args.query,
-        size=args.q, decklist_path=args.dl, set_code=args.set
+        mode=args.mode, output_path=args.out, size=args.size,
+        query=args.query, decklist_path=args.decklist, set_code=args.set
     )
