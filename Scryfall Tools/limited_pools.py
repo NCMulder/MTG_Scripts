@@ -6,10 +6,12 @@ def get_pack(set_code='ISD'):
     pack = []
 
     # Get a rare or mythic
+    rare_card = None
     get_mythic = random.randint(0, 7) == 7
     if get_mythic:
         rare_card = st.get_random_card(f'set:{set_code} r=m in:booster')
-    if not get_mythic or not rare_card:
+
+    if rare_card is None:
         rare_card = st.get_random_card(f'set:{set_code} r=r in:booster')
 
     pack.append(rare_card)
@@ -24,7 +26,6 @@ def get_pack(set_code='ISD'):
     commons = random.sample(list(cards), 10)
     pack += commons
 
-    # print(pack)
     return pack
 
 
