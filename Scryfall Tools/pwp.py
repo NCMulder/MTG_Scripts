@@ -21,7 +21,7 @@ with open(sys.argv[1]) as file:
         elif "Joker" in pieces[1]:
             joker += int(pieces[2][8:])
             if "Tournament" in pieces[1]:
-                draft+= int(pieces[2][8:])
+                draft += int(pieces[2][8:])
         elif "Grand Prix" in pieces[1]:
             GP += int(pieces[2][8:])
         else:
