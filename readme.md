@@ -27,4 +27,7 @@ The `-q` argument can be used to specify a card image size. Supported arguments 
 All other arguments are assumed to be extra query specifiers to get your random commander. For example, `python main.py "o:instant OR o:sorcery"` gets a random commander with *instant* and/or *sorcery* in its oracle text. See [Scryfall](https://scryfall.com/docs/syntax) for a full syntax guide.
 
 ## Bugs, issues, suggestions
-If you encounter any bugs/issues/suggestions, either create an issue or send me a message on Discord?
+If you encounter any bugs/issues/suggestions, [create an issue](https://github.com/NCMulder/MTG_Scripts/issues).
+
+## Credit
+Thanks to [Marcanius](https://github.com/Marcanius) for adding printing preference functionality and enforcing a clear code standard.
