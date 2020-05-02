@@ -67,7 +67,9 @@ def get_card_image(cardname='', version='large', uri=''):
 def search_for_cards(query):
     """Return a list of search results."""
 
-    cards = requests.get(f'https://api.scryfall.com/cards/search?q={query}').json()
+    cards = requests.get(
+        f'https://api.scryfall.com/cards/search?q={query}'
+    ).json()
 
     if cards['object'] == 'error':
         return None
@@ -96,7 +98,8 @@ def get_collection(decklist_dict):
 
         for _ in range(count):
             identifiers.append(card_identifier)
-            if (idx + 1) % 75 == 0 or idx + 1 == len(decklist_dict):
+            if (len(identifiers) + 1) % 75 == 0 \
+                    or idx + 1 == len(decklist_dict):
                 # Either the identifiers' list is getting too long
                 # or we are at the end of the list. Post the data,
                 # store the result and reset the data.
