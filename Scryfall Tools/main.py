@@ -3,10 +3,10 @@ import configparser
 import os
 
 from TTS_MTG_deck_creator import create_tts_mtg_decks
+from constants import CARD_SIZES
 from limited_pools import get_sealed_pool
 from random_commander_deck import create_random_commander_deck
 from scryfall_tools import get_collection
-from constants import CARD_SIZES
 
 modes = [
     'random_commander',
@@ -41,8 +41,10 @@ def main(
             # Flip decklist_array ['[amount] [cardname]']
             # to {[cardname]: [amount]}
             deck_dict = {
-                ' '.join(entry.split(' ')[1:]).strip(): int(entry.split(' ')[0])
-                for entry in decklist_array if entry.strip()
+                ' '.join(entry.split(' ')[1:]).strip()
+                : int(entry.split(' ')[0])
+                for entry in decklist_array
+                if entry.strip() and not entry.startswith('//')
             }
             decklist = get_collection(deck_dict)
             decks[deckname] = decklist
