@@ -87,26 +87,24 @@ def get_collection(decklist_dict):
     """
 
     results = []
-    base = {}
     identifiers = []
+
     for idx, (cardname, count) in enumerate(decklist_dict.items()):
-        card_identifier = getattr(
-            cardname_identifier_overrides,
+        card_identifier = cardname_identifier_overrides.get(
             cardname,
             {'name': cardname}
         )
 
         for _ in range(count):
             identifiers.append(card_identifier)
-            if (len(identifiers) + 1) % 75 == 0 \
-                    or idx + 1 == len(decklist_dict):
-                # Either the identifiers' list is getting too long
-                # or we are at the end of the list. Post the data,
-                # store the result and reset the data.
-                base['identifiers'] = identifiers
+
+            # If we reached the limit of Scryfall's collection lookup
+            # or the end of the decklist:
+            # Retrieve the cards and continue parsing lines.
+            if len(identifiers) == 75 or idx + 1 == len(decklist_dict):
                 cards = requests.post(
                     'https://api.scryfall.com/cards/collection',
-                    json=base
+                    json={'identifiers': identifiers}
                 ).json()
                 results.append(cards)
                 identifiers = []
