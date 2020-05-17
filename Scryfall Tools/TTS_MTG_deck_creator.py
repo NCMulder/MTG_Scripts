@@ -427,7 +427,7 @@ def create_deck_json_files(decks, sf_urls, df_urls, path, name):
         json.dump(base, outfile, indent=2, ensure_ascii=False)
 
 
-def create_tts_mtg_decks(decks, path='', card_size_text="normal"):
+def create_tts_mtg_decks(decks, path='', card_size_text='normal', name=None):
     print('Gathering unique cards...', flush=True)
     mains_as_ids, tokens_as_ids, dfcs_as_ids = transform_decks(decks.values())
 
@@ -448,7 +448,7 @@ def create_tts_mtg_decks(decks, path='', card_size_text="normal"):
         sf_urls,
         df_urls,
         path,
-        list(decks.keys())[0]
+        name if name else list(decks.keys())[0]
     )
 
     print('Done!', flush=True)
