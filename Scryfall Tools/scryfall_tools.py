@@ -3,7 +3,7 @@
 
 import requests
 
-from overrides import cardname_identifier_overrides
+from card_overrides import cardname_identifier_overrides
 
 
 def get_random_card(q=None, verbose=False):

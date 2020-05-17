@@ -39,7 +39,7 @@ def main(
             deckname = os.path.splitext(os.path.basename(decklist_path))[0]
             decklist_array = decklist_file.readlines()
             # Flip decklist_array ['[amount] [cardname]']
-            # to {[cardname]: [amount]}
+            # to dict {[cardname]: [amount]}
             deck_dict = {
                 ' '.join(entry.split(' ')[1:]).strip()
                 : int(entry.split(' ')[0])
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         '-o', '--out',
-        help='Absolute path of which directory to store the generated files',
+        help='Absolute path of which directory to store the generated deck',
         default=config['Main'].get('default_output_path', ''),
         type=str
     )
