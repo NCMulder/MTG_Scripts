@@ -259,6 +259,19 @@ _planeswalkers = {
     'Narset of the Ancient Way': {'collector_number': '278', 'set': 'iko'},
 }
 
+_transform_cards_ixalan = {
+    'Legion\'s Landing': {'collector_number': '22', 'set': 'pxtc'},
+    'Searh For Azcanta': {'collector_number': '74', 'set': 'pxtc'},
+    'Arguel\'s Blood Fast': {'collector_number': '90', 'set': 'pxtc'},
+    'Vance\'s Blasting Cannons': {'collector_number': '173', 'set': 'pxtc'},
+    'Growing Rites of Itlimoc': {'collector_number': '191', 'set': 'pxtc'},
+    'Conqueror\'s Galleon': {'collector_number': '234', 'set': 'pxtc'},
+    'Dowsing Dagger': {'collector_number': '235', 'set': 'pxtc'},
+    'Primal Amulet': {'collector_number': '243', 'set': 'pxtc'},
+    'Thaumatic Compass': {'collector_number': '249', 'set': 'pxtc'},
+    'Treasure Map': {'collector_number': '250', 'set': 'pxtc'},
+}
+
 cardname_identifier_overrides = {
     **_basic_lands['ust'],
     **_basic_lands_snow_covered['mh1'],
@@ -275,4 +288,6 @@ cardname_identifier_overrides = {
     **_theros_divines,
 
     **_planeswalkers,
+
+    **_transform_cards_ixalan,
 }

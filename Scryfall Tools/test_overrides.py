@@ -2,8 +2,8 @@ import argparse
 import configparser
 
 from TTS_MTG_deck_creator import create_tts_mtg_decks
-from card_overrides.overrides import cardname_identifier_overrides
 from constants import CARD_SIZES
+from overrides import cardname_identifier_overrides
 from scryfall_tools import get_collection
 
 
