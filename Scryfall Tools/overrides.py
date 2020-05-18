@@ -272,8 +272,41 @@ _transform_cards_ixalan = {
     'Treasure Map': {'collector_number': '250', 'set': 'pxtc'},
 }
 
+_mutatoes_showcase = {
+    'Cubwarden': {'collector_number': '279', 'set': 'iko'},
+    'Huntmaster Liger': {'collector_number': '280', 'set': 'iko'},
+    'Majestic Auricorn': {'collector_number': '281', 'set': 'iko'},
+    'Vulpikeet': {'collector_number': '282', 'set': 'iko'},
+    'Archipelagore': {'collector_number': '283', 'set': 'iko'},
+    'Dreamtail Heron': {'collector_number': '284', 'set': 'iko'},
+    'Pouncing Shoreshark': {'collector_number': '285', 'set': 'iko'},
+    'Sea-Dasher Octopus': {'collector_number': '286', 'set': 'iko'},
+    'Cavern Whisperer': {'collector_number': '287', 'set': 'iko'},
+    'Chittering Harvester': {'collector_number': '288', 'set': 'iko'},
+    'Dirge Bat': {'collector_number': '289', 'set': 'iko'},
+    'Insatiable Hemophage': {'collector_number': '290', 'set': 'iko'},
+    'Cloudpiercer': {'collector_number': '291', 'set': 'iko'},
+    'Everquil Phoenix': {'collector_number': '292', 'set': 'iko'},
+    'Porcuparrot': {'collector_number': '293', 'set': 'iko'},
+    'Auspicious Starrix': {'collector_number': '294', 'set': 'iko'},
+    'Gemrazer': {'collector_number': '295', 'set': 'iko'},
+    'Glowstone Recluse': {'collector_number': '296', 'set': 'iko'},
+    'Migratory Greathorn': {'collector_number': '297', 'set': 'iko'},
+    'Boneyard Lurker': {'collector_number': '298', 'set': 'iko'},
+    'Brokkos, Apex of Forever': {'collector_number': '299', 'set': 'iko'},
+    'Illuna, Apex of Wishes': {'collector_number': '300', 'set': 'iko'},
+    'Lore Drakkis': {'collector_number': '301', 'set': 'iko'},
+    'Necropanther': {'collector_number': '302', 'set': 'iko'},
+    'Nethroi, Apex of Death': {'collector_number': '303', 'set': 'iko'},
+    'Parcelbeast': {'collector_number': '304', 'set': 'iko'},
+    'Regal Leosaur': {'collector_number': '305', 'set': 'iko'},
+    'Snapdax, Apex of the Hunt': {'collector_number': '306', 'set': 'iko'},
+    'Trumpeting Gnarr': {'collector_number': '307', 'set': 'iko'},
+    'Vadrok, Apex of Thunder': {'collector_number': '308', 'set': 'iko'},
+}
+
 cardname_identifier_overrides = {
-    **_basic_lands['ust'],
+    **_basic_lands['thb'],
     **_basic_lands_snow_covered['mh1'],
     **_basic_lands_wastes['koz'],
 
@@ -290,4 +323,6 @@ cardname_identifier_overrides = {
     **_planeswalkers,
 
     **_transform_cards_ixalan,
+
+    **_mutatoes_showcase,
 }
