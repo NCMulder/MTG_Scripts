@@ -61,7 +61,7 @@ df_card_ids = {}
 def collect_ids(deck):
     deck_as_ids = {}
     for card in deck:
-        if card['layout'] in ('transform', 'double_faced_token'):
+        if card['layout'] in ('transform', 'double_faced_token', 'modal_dfc'):
             if card['id'] not in df_card_ids:
                 card_id = (
                         int(len(df_card_ids) / 24) * 100
@@ -99,9 +99,11 @@ def transform_decks(decks):
         for card in deck:
             if 'all_parts' in card:
                 for related_entry in card['all_parts']:
-                    if (related_entry['component'] == 'token' or
+                    if (
+                            related_entry['component'] == 'token' or
                             related_entry['component'] == 'combo_piece' and
-                            'Emblem' in related_entry['name']):
+                            'Emblem' in related_entry['name']
+                    ):
                         token = scryfall_tools.get_card(
                             '',
                             uri=related_entry['uri']
@@ -115,7 +117,8 @@ def transform_decks(decks):
                         )
                         if meld_result not in deck_tokens:
                             deck_tokens.append(meld_result)
-            if card['layout'] == 'transform':
+
+            if card['layout'] in ('transform', 'modal_dfc'):
                 deck_dfcs.append(card)
 
         for card in deck_dfcs:
@@ -218,7 +221,7 @@ def create_deck_images(card_size_text):
             if card['layout'] == 'meld':
                 front_uri = card['image_uris'][card_size_text]
                 back_uri = card['image_uris'][card_size_text]
-            if card['layout'] == 'transform':
+            if card['layout'] in ('transform', 'modal_dfc'):
                 front_uri = card['card_faces'][0]['image_uris'][card_size_text]
                 back_uri = card['card_faces'][1]['image_uris'][card_size_text]
 
