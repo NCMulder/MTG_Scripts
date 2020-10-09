@@ -1,10 +1,11 @@
 import argparse
 import configparser
 import os
+from datetime import date
 
 from TTS_MTG_deck_creator import create_tts_mtg_decks
 from constants import CARD_SIZES
-from limited_pools import get_sealed_pool
+from limited_pools import get_limited_pool
 from random_commander_deck import create_random_commander_deck
 from scryfall_tools import get_collection
 
@@ -52,14 +53,62 @@ def main(
     elif mode == 'sealed_pool':
         decks = get_sealed_pool(set_code=set_code)
 
+def decklist(args):
+    # Handle sideboards, sets
+    deck_name = os.path.splitext(os.path.basename(args.file.name))[0]
+    decklist_array = args.file.readlines()
+
+    # Flip decklist_array ['[amount] [cardname]']
+    # to {[cardname]: [amount]}
+    deck_dict = {
+        ' '.join(entry.split(' ')[1:]).strip()
+        : int(entry.split(' ')[0])
+        for entry in decklist_array
+        if entry.strip() and not entry.startswith('//')
+    }
+
     create_tts_mtg_decks(
-        decks,
-        output_path,
-        card_size_text=size
+        decks={deck_name: get_collection(deck_dict)},
+        path=args.out,
+        card_size_text=args.size,
     )
 
 
-if __name__ == "__main__":
+def draft(args):
+    create_tts_mtg_decks(
+        decks=get_limited_pool(set_code=args.code, number_of_packs=3),
+        path=args.out,
+        card_size_text=args.size,
+        name=f'Draft Pool {args.code.upper()} ({date.today()})'
+    )
+
+
+def random_commander(args):
+    deck_list, deck_name = create_random_commander_deck(
+        verbose=args.verbose,
+        query=' '.join(args.query),
+        deck_name=args.name
+    )
+    if not deck_list:
+        return
+
+    create_tts_mtg_decks(
+        decks={deck_name: deck_list},
+        path=args.out,
+        card_size_text=args.size,
+    )
+
+
+def sealed(args):
+    create_tts_mtg_decks(
+        decks=get_limited_pool(set_code=args.code, number_of_packs=6),
+        path=args.out,
+        card_size_text=args.size,
+        name=f'Sealed Pool {args.code.upper()} ({date.today()})',
+    )
+
+
+if __name__ == '__main__':
     config = configparser.ConfigParser()
     config.read('config.ini')
 
@@ -67,47 +116,87 @@ if __name__ == "__main__":
         description='Create the TTS files for an M:TG deck.'
     )
     parser.add_argument(
-        '-m', '--mode',
-        help='The mode to use for the program',
-        default='random_commander',
-        choices=modes,
-        type=str
+        '-v', '--verbose',
+        help='Display additional information',
+        action='store_true'
     )
-    parser.add_argument(
+
+    subparsers = parser.add_subparsers(
+        dest='mode',
+        description='Available modes',
+        metavar='mode',
+        required=True
+    )
+
+    parent_parser = argparse.ArgumentParser(add_help=False)
+    parent_parser.add_argument(
         '-o', '--out',
-        help='Absolute path of which directory to store the generated deck',
+        help='Absolute path of the directory '
+             'in which to store the generated deck',
         default=config['Main'].get('default_output_path', ''),
         type=str
     )
-    parser.add_argument(
+    parent_parser.add_argument(
         '-s', '--size',
         help='Card image size',
         default='normal',
         choices=CARD_SIZES,
-        type=str
+        type=str,
+        metavar='SIZE'
     )
-    parser.add_argument(
-        '-q', '--query',
-        help='Additional query parameters for selecting a random commander',
-        nargs='?',
+
+    parser_decklist = subparsers.add_parser(
+        'decklist',
+        help='Create a TTS deck for the provided decklist file',
+        parents=[parent_parser]
+    )
+    parser_decklist.set_defaults(func=decklist)
+    parser_decklist.add_argument(
+        'file',
+        help='Path to the decklist',
+        type=argparse.FileType('r')
+    )
+
+    parser_draft = subparsers.add_parser(
+        'draft',
+        help='Create a TTS deck for a draft pool from the provided set',
+        parents=[parent_parser]
+    )
+    parser_draft.set_defaults(func=draft)
+    parser_draft.add_argument(
+        'code',
+        help='3 letter set code',
+    )
+
+    parser_random_commander = subparsers.add_parser(
+        'random_commander',
+        help='Create a TTS deck for a random EDH commander',
+        parents=[parent_parser]
+    )
+    parser_random_commander.set_defaults(func=random_commander)
+    parser_random_commander.add_argument(
+        'query',
+        help='Additional query parameters for selecting the commander',
         default='',
-        type=str
+        nargs='*'
     )
-    parser.add_argument(
-        '-dl', '--decklist',
-        help='URL of the decklist to retrieve',
-        type=str
-    )
-    parser.add_argument(
-        '-set',
-        help='Limited set',
-        default='ISD',
-        type=str
+    parser_random_commander.add_argument(
+        '-n', '--name',
+        help='The name of the generated deck',
+        default=''
     )
 
+    parser_sealed = subparsers.add_parser(
+        'sealed',
+        help='Create a TTS deck for a sealed pool from the provided set',
+        parents=[parent_parser]
+    )
+    parser_sealed.set_defaults(func=sealed)
+    parser_sealed.add_argument(
+        'code',
+        help='3 letter set code'
+    )
+
+    # Parse the args and call whatever mode was selected
     args = parser.parse_args()
-
-    main(
-        mode=args.mode, output_path=args.out, size=args.size,
-        query=args.query, decklist_path=args.decklist, set_code=args.set
-    )
+    args.func(args)

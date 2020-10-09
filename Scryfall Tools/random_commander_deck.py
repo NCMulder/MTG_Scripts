@@ -1,10 +1,8 @@
-import argparse
 import configparser
 import re
 
 import requests
 
-from constants import CARD_SIZES
 from scryfall_tools import get_collection, get_random_card
 
 try:
@@ -48,21 +46,23 @@ def get_edhrec_average_deck(commander):
     return decklist_filtered
 
 
-def create_random_commander_deck(q='', verbose=False, deckname=''):
+def create_random_commander_deck(query='', verbose=False, deck_name=''):
     """Creates a random commander deck for use in TTS"""
 
-    query = q
     if 'is:commander' not in query:
         query = f'({query}) AND is:commander'
 
-    random_commander = get_random_card(q=query)
     if verbose:
-        print(f'Building deck for commander: {random_commander["name"]}')
+        print(f'Query: {query}')
+
+    random_commander = get_random_card(q=query)
+
+    print(f'Building deck for commander: {random_commander["name"]}')
 
     project_config = configparser.ConfigParser()
     project_config.read('config.ini')
     pf = project_config['Main'].get('deckname_prefix')
-    deck_name = deckname or f'{pf} {random_commander["name"].split(" //")[0]}'
+    deck_name = deck_name or f'{pf} {random_commander["name"].split(" //")[0]}'
 
     deck_dict = get_edhrec_average_deck(random_commander)
 
@@ -72,49 +72,3 @@ def create_random_commander_deck(q='', verbose=False, deckname=''):
     decklist = get_collection(deck_dict)
 
     return decklist, deck_name
-
-
-if __name__ == "__main__":
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-
-    parser = argparse.ArgumentParser(
-        description='Create the TTS files for a (random) commander.'
-    )
-    parser.add_argument(
-        'query',
-        help='Additional query parameters for selecting the commander',
-        nargs='?',
-        default='',
-        type=str
-    )
-    parser.add_argument(
-        '-o', '--out',
-        help='Absolute path of which directory to store the generated files',
-        default=config['Main'].get('default_output_path', ''),
-        type=str
-    )
-    parser.add_argument(
-        '-s', '--size',
-        help='Card image size',
-        default='normal',
-        choices=CARD_SIZES,
-        type=str
-    )
-    parser.add_argument(
-        '--deckname',
-        help='The name to give to the deck file',
-        type=str
-    )
-    parser.add_argument(
-        '-v', '--verbose',
-        action='save_false'
-    )
-
-    args = parser.parse_args()
-
-    create_random_commander_deck(
-        q=args.query,
-        verbose=args.verbose,
-        deckname=args.deckname
-    )

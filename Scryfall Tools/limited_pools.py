@@ -1,20 +1,16 @@
-import scryfall_tools as st
 import random
 
+import scryfall_tools as st
 
-def get_pack(set_code='ISD'):
-    pack = []
 
-    # Get a rare or mythic
-    rare_card = None
-    get_mythic = random.randint(0, 7) == 7
-    if get_mythic:
+def get_pack(set_code):
+    # Get a rare or mythic (~14% chance of Mythic)
+    if random.randint(0, 7) == 7:
         rare_card = st.get_random_card(f'set:{set_code} r=m in:booster')
-
-    if rare_card is None:
+    else:
         rare_card = st.get_random_card(f'set:{set_code} r=r in:booster')
 
-    pack.append(rare_card)
+    pack = [rare_card]
 
     # Get 3 uncommons
     cards = st.search_for_cards(f'set:{set_code} r=u in:booster')
@@ -29,11 +25,8 @@ def get_pack(set_code='ISD'):
     return pack
 
 
-def get_sealed_pool(set_code='ISD'):
-    # Get 6 packs and add them to the pool
-    return {f'{set_code} - Pool {i}': get_pack(set_code) for i in range(6)}
-
-
-def get_draft_pool(set_code='ISD'):
-    # Get 3 packs and add them to the pool
-    return {f'{set_code} - Pool {i}': get_pack(set_code) for i in range(3)}
+def get_limited_pool(set_code, number_of_packs):
+    return {
+        f'{set_code.upper()} - Pack {i + 1}': get_pack(set_code)
+        for i in range(number_of_packs)
+    }
