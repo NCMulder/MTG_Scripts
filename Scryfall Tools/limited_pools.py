@@ -10,15 +10,10 @@ def get_pack(set_code):
         
         # Get 1 foil
         # Randomly determine rarity of foil
-        foil_rng = random.randint(0, 119)
-        if(foil_rng == 119):
-            rarity = 'm'
-        elif(foil_rng > 111):
-            rarity = 'r'
-        elif(foil_rng > 88):
-            rarity = 'u'
-        else:
-            rarity = 'c'
+        rarity = random.choices(
+            [m', 'r', 'u', 'c'], 
+            [1, 8, 23, 88]
+        )
         
         # If the foil is mythic, the foil can also be one of the 32 reprint commanders only found in foil etched versions
         if(rarity == 'm'):
