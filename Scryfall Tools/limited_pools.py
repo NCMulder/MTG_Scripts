@@ -11,12 +11,12 @@ def get_pack(set_code):
         # Get 1 foil
         # Randomly determine rarity of foil
         rarity = random.choices(
-            [m', 'r', 'u', 'c'], 
+            ['m', 'r', 'u', 'c'], 
             [1, 8, 23, 88]
         )
         
         # If the foil is mythic, the foil can also be one of the 32 reprint commanders only found in foil etched versions
-        if(rarity == 'm'):
+        if rarity == 'm':
             card = st.get_random_card(f's:cmr r:{rarity} (is:booster or (is:reprint frame:etched))')
         # If the foil is not mythic, the foil can only be a card found in draft boosters of the foil's rarity
         else:
@@ -25,35 +25,29 @@ def get_pack(set_code):
         # There is a fifty percent chance a legendary foil will be replaced with an foil etched version
         card_name = card['name']
         # Search for the legendary keyword in the typeline
-        if('Legendary' in card['type_line']):
+        if 'Legendary' in card['type_line']:
             # If the card is legendary, replace it with the etched foil frame 50% of the time
             etched_foil_rng = random.randint(0, 1)
-            if(etched_foil_rng == 1):
+            if etched_foil_rng == 1:
                 # Replace the card with the foil etched version of the same name
                 card = st.search_for_cards(f's:cmr {card_name} frame:etched')[0]
         
         pack += [card]
         
         # Get 2 legendary cards of any rarity
-        legendary_rng_1 = random.randint(0,31)
-        legendary_rng_2 = random.randint(0,31)
+        legendary_rarity_1 = random.choices(
+            ['m', 'r', 'u'],
+            [1, 8, 23]
+        )
+        legendary_rarity_2 = random.choices(
+            ['m', 'r', 'u'],
+            [1, 8, 23]
+        )
         
-        if(legendary_rng_1 == 31):
-            rarity_1='m'
-        elif(legendary_rng_1 > 23):
-            rarity_1='r'
-        else:
-            rarity_1='u'
-        
-        if(legendary_rng_2 == 31):
-            rarity_2='m'
-        elif(legendary_rng_2 > 23):
-            rarity_2='r'
-        else:
-            rarity_2='u'
-        
-        pack += [st.get_random_card(f'set:{set_code} t:legendary is:booster r:{rarity_1}')]
-        pack += [st.get_random_card(f'set:{set_code} t:legendary is:booster r:{rarity_2}')]
+        legendary_card_1 = st.get_random_card(f'set:{set_code} t:legendary is:booster r:{legendary_rarity_1}')
+        pack += [legendary_card_1]
+        legendary_card_1_name = legendary_card_1['name']
+        pack += [st.get_random_card(f'set:{set_code} t:legendary is:booster -"{legendary_card_1_name}" r:{legendary_rarity_2}')]
         
         # Get a rare or mythic (~14% chance of Mythic)
         if random.randint(0, 7) == 7:
