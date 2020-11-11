@@ -76,7 +76,7 @@ def decklist(args):
 
 def draft(args):
     create_tts_mtg_decks(
-        decks=get_limited_pool(set_code=args.code, number_of_packs=3),
+        decks=get_limited_pool(set_code=args.code, number_of_packs=3 * args.count),
         path=args.out,
         card_size_text=args.size,
         name=f'Draft Pool {args.code.upper()} ({date.today()})'
@@ -101,7 +101,7 @@ def random_commander(args):
 
 def sealed(args):
     create_tts_mtg_decks(
-        decks=get_limited_pool(set_code=args.code, number_of_packs=6),
+        decks=get_limited_pool(set_code=args.code, number_of_packs=6 * args.count),
         path=args.out,
         card_size_text=args.size,
         name=f'Sealed Pool {args.code.upper()} ({date.today()})',
@@ -167,6 +167,12 @@ if __name__ == '__main__':
         'code',
         help='3 letter set code',
     )
+    parser_draft.add_argument(
+        'count',
+        help='The number of pools to generate',
+        type=int,
+        default=1
+    )
 
     parser_random_commander = subparsers.add_parser(
         'random_commander',
@@ -195,6 +201,12 @@ if __name__ == '__main__':
     parser_sealed.add_argument(
         'code',
         help='3 letter set code'
+    )
+    parser_sealed.add_argument(
+        'count',
+        help='The number of pools to generate',
+        type=int,
+        default=1
     )
 
     # Parse the args and call whatever mode was selected
