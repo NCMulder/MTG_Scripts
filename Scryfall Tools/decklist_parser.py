@@ -34,7 +34,7 @@ def parse_decklist(file):
             continue
 
         ## Match many types of decklist entries
-        regex = r'(\d*)x? ?([^\(\)\[\]\n]+)(?:[\(\[](.*)[\)\]] ?([0-z]*)(.*))?'
+        regex = r'(\d{0,3})x?\b ?([^\(\)\[\]\n]+)(?: ?[\(\[]([^\(\)\[\]\n ]+)[\)\]] ?([0-z]*)(.*))?'
         ma = re.search(regex, line)
         count = int(ma.group(1)) if ma.group(1) else 1
 
