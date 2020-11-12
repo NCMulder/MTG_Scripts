@@ -4,7 +4,6 @@
 
 import os
 import re
-from scryfall_tools import get_collection
 
 import sys
 

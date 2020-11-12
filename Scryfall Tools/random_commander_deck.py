@@ -34,12 +34,12 @@ def get_edhrec_average_deck(commander):
 
     decklist_raw = list_cards.split('\n')
     pattern = re.compile(r'(\d*) (.*)$')
-    decklist_filtered = {
-        match.group(2): int(match.group(1))
+    decklist_filtered = [
+        ({'name' : match.group(2)}, int(match.group(1)))
         for match in (pattern.match(entry) for entry in decklist_raw) if match
-    }
+    ]
 
-    if sum(decklist_filtered.values()) != 100:
+    if sum([count for card, count in decklist_filtered]) != 100:
         print('The found decklist is incomplete')
         return None
 
@@ -64,11 +64,11 @@ def create_random_commander_deck(query='', verbose=False, deck_name=''):
     pf = project_config['Main'].get('deckname_prefix')
     deck_name = deck_name or f'{pf} {random_commander["name"].split(" //")[0]}'
 
-    deck_dict = get_edhrec_average_deck(random_commander)
+    deck_array = get_edhrec_average_deck(random_commander)
 
-    if not deck_dict:
+    if not deck_array:
         return None, ''
 
-    decklist = get_collection(deck_dict)
+    decklist = get_collection(deck_array)
 
     return decklist, deck_name
