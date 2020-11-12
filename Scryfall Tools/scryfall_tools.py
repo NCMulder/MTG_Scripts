@@ -81,7 +81,7 @@ def search_for_cards(query):
         return [card for lst in stored for card in lst]
 
 
-def get_collection(decklist_dict):
+def get_collection(decklist):
     """Return a dictionary of identifiers for posting to Scryfall.
     See https://scryfall.com/docs/api/cards/collection
     """
@@ -89,11 +89,14 @@ def get_collection(decklist_dict):
     results = []
     identifiers = []
 
-    for idx, (cardname, count) in enumerate(decklist_dict.items()):
-        card_identifier = cardname_identifier_overrides.get(
-            cardname,
-            {'name': cardname}
-        )
+    for idx, (identifier, count) in enumerate(decklist):
+        if 'set' not in identifier.keys():
+            card_identifier = cardname_identifier_overrides.get(
+                identifier['name'],
+                identifier
+            )
+        else:
+            card_identifier = identifier
 
         for _ in range(count):
             identifiers.append(card_identifier)
@@ -101,12 +104,12 @@ def get_collection(decklist_dict):
             # If we reached the limit of Scryfall's collection lookup
             # or the end of the decklist:
             # Retrieve the cards and continue parsing lines.
-            if len(identifiers) == 75 or idx + 1 == len(decklist_dict):
+            if len(identifiers) == 75 or idx + 1 == len(decklist):
                 cards = requests.post(
                     'https://api.scryfall.com/cards/collection',
                     json={'identifiers': identifiers}
-                ).json()
-                results.append(cards)
+                )
+                results.append(cards.json())
                 identifiers = []
 
     # Merge the results
