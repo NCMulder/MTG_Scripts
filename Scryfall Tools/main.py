@@ -40,10 +40,15 @@ def decklist(args):
 
 def draft(args):
     create_tts_mtg_decks(
-        decks=get_limited_pool(set_code=args.code, number_of_packs=3),
+        decks=get_limited_pool(
+            set_code=args.code,
+            number_of_players=args.players,
+            packs_per_player=args.packs
+        ),
         path=args.out,
         card_size_text=args.size,
         name=f'Draft Pool {args.code.upper()} ({date.today()})',
+        packs_per_player=args.packs,
         log_card_names=False
     )
 
@@ -66,10 +71,15 @@ def random_commander(args):
 
 def sealed(args):
     create_tts_mtg_decks(
-        decks=get_limited_pool(set_code=args.code, number_of_packs=6),
+        decks=get_limited_pool(
+            set_code=args.code,
+            number_of_players=args.players,
+            packs_per_player=args.packs
+        ),
         path=args.out,
         card_size_text=args.size,
         name=f'Sealed Pool {args.code.upper()} ({date.today()})',
+        packs_per_player=args.packs,
         log_card_names=False
     )
 
@@ -135,6 +145,18 @@ if __name__ == '__main__':
         'code',
         help='3 letter set code',
     )
+    parser_draft.add_argument(
+        '-pa', '--packs',
+        help='number of packs per player (default: %(default)d)',
+        default=3,
+        type=int
+    )
+    parser_draft.add_argument(
+        '-pl', '--players',
+        help='number of players (default: %(default)d)',
+        default=1,
+        type=int
+    )
 
     # RANDOM COMMANDER DECK
     parser_random_commander = subparsers.add_parser(
@@ -165,6 +187,18 @@ if __name__ == '__main__':
     parser_sealed.add_argument(
         'code',
         help='3 letter set code'
+    )
+    parser_sealed.add_argument(
+        '-pa', '--packs',
+        help='number of packs per player (default: %(default)d)',
+        default=6,
+        type=int
+    )
+    parser_sealed.add_argument(
+        '-pl', '--players',
+        help='number of players (default: %(default)d)',
+        default=1,
+        type=int
     )
 
     # Parse the args and call whatever mode was selected
