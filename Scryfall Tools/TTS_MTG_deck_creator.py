@@ -2,12 +2,13 @@
 used in TableTop Simulator
  """
 
+import itertools
 import json
+import random
 import time
 from datetime import datetime
 from io import BytesIO
 from pathlib import Path
-from random import randint
 
 from PIL import Image
 
@@ -91,43 +92,42 @@ def collect_ids(deck):
 
 
 def transform_decks(decks):
-    tokens = []
+    tokens = {}
     dfcs = []
+
     for deck in decks:
-        deck_tokens = []
+        deck_tokens = {}
         deck_dfcs = []
         for card in deck:
+            # Add related parts to the tokens deck.
             if 'all_parts' in card:
                 for related_entry in card['all_parts']:
                     if (
                             related_entry['component'] == 'token' or
+                            related_entry['component'] == 'meld_result' or
                             related_entry['component'] == 'combo_piece' and
-                            'Emblem' in related_entry['name']
+                            (
+                                    'Emblem' in related_entry['name'] or
+                                    'Monarch' in related_entry['name']
+                            )
                     ):
-                        token = scryfall_tools.get_card(
-                            '',
-                            uri=related_entry['uri']
+                        related_card = scryfall_tools.get_card(
+                            '', uri=related_entry['uri']
                         )
-                        if token not in deck_tokens:
-                            deck_tokens.append(token)
-                    if related_entry['component'] == 'meld_result':
-                        meld_result = scryfall_tools.get_card(
-                            '',
-                            uri=related_entry['uri']
-                        )
-                        if meld_result not in deck_tokens:
-                            deck_tokens.append(meld_result)
+                        deck_tokens[related_card['oracle_id']] = related_card
 
+            # Add double-faced cards to the DFCs deck.
             if card['layout'] in ('transform', 'modal_dfc'):
                 deck_dfcs.append(card)
 
         for card in deck_dfcs:
             deck.remove(card)
-        tokens.append(deck_tokens)
+
+        tokens = {**tokens, **deck_tokens}
         dfcs.append(deck_dfcs)
 
     main_decks_as_ids = [collect_ids(deck) for deck in decks]
-    token_decks_as_ids = [collect_ids(deck) for deck in tokens]
+    token_decks_as_ids = [collect_ids(tokens.values())]
     dfc_decks_as_ids = [collect_ids(deck) for deck in dfcs]
 
     return main_decks_as_ids, token_decks_as_ids, dfc_decks_as_ids
@@ -442,11 +442,12 @@ def create_tts_mtg_decks(decks, path='', card_size_text='normal', name=None):
 
     print('Creating deck JSON files', flush=True)
     create_deck_json_files(
-        zip(
+        itertools.zip_longest(
             [deck for deck in decks],
             mains_as_ids,
             tokens_as_ids,
-            dfcs_as_ids
+            dfcs_as_ids,
+            fillvalue=[]
         ),
         sf_urls,
         df_urls,
