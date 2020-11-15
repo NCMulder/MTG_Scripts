@@ -105,8 +105,17 @@ def get_pack(set_code):
     return pack_constructor(set_code)
 
 
-def get_limited_pool(set_code, number_of_packs):
-    return {
-        f'{set_code.upper()} - Pack {i + 1}': get_pack(set_code)
-        for i in range(number_of_packs)
-    }
+def get_limited_pool(set_code, number_of_players, packs_per_player):
+    if number_of_players == 1:
+        names = [
+            f'{set_code.upper()} - Pack {i + 1}'
+            for i in range(packs_per_player)
+        ]
+    else:
+        names = [
+            f'{set_code.upper()} - Player {j + 1}, Pack {i + 1}'
+            for j in range(number_of_players)
+            for i in range(packs_per_player)
+        ]
+
+    return {name: get_pack(set_code) for name in names}

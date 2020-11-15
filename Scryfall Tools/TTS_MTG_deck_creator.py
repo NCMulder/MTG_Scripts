@@ -183,7 +183,7 @@ def create_deck_images(card_size_text, log_card_names=True):
 
     start = time.time()
     for card_id, card in sf_unique_cards.items():
-        if not log_card_names:
+        if log_card_names:
             print(
                 f'Handling {card["name"] + " - " + str(card_id) + "...":<80}',
                 end='\r',
@@ -214,7 +214,7 @@ def create_deck_images(card_size_text, log_card_names=True):
         print('\n\nHandling double-faced cards')
 
         for card_id, card in df_unique_cards.items():
-            if not log_card_names:
+            if log_card_names:
                 print(
                     f'Handling '
                     f'{card["name"] + " - " + str(card_id) + "...":<80}',
@@ -279,7 +279,14 @@ def save_deck_images(images):
     return urls
 
 
-def create_deck_json_files(decks, sf_urls, df_urls, path, name):
+def create_deck_json_files(
+        decks,
+        sf_urls,
+        df_urls,
+        path,
+        name,
+        packs_per_player=3
+):
     """
     Transform the decks iterable into a single JSON file containing
     the complete information TTS will need for a set of Custom Decks.
@@ -364,8 +371,9 @@ def create_deck_json_files(decks, sf_urls, df_urls, path, name):
             deck_container = {
                 'Name': 'DeckCustom',
                 'Transform': {
-                    'posX': (i % 6) * 3.0, 'posY': 0.0,
-                    'posZ': int(i / 6) * -4.0,
+                    'posX': (i % packs_per_player) * 3.0,
+                    'posY': 0.0,
+                    'posZ': int(i / packs_per_player) * -4.0,
                     'rotX': 0, 'rotY': 180, 'rotZ': 180,
                     'scaleX': 1, 'scaleY': 1, 'scaleZ': 1
                 },
@@ -479,6 +487,7 @@ def create_tts_mtg_decks(
         path='',
         card_size_text='normal',
         name=None,
+        packs_per_player=3,
         log_card_names=True
 ):
     print(
@@ -505,7 +514,8 @@ def create_tts_mtg_decks(
         sf_urls,
         df_urls,
         path,
-        name if name else list(decks.keys())[0]
+        name if name else list(decks.keys())[0],
+        packs_per_player
     )
 
     print(
