@@ -4,105 +4,103 @@ import scryfall_tools as st
 
 
 def get_pack(set_code):
-    def get_cmr_pack(set_code):
+    def get_cmr_pack():
         # Commander Legends pack distribution        
         pack = []
-        
-        # Get 1 foil
-        # Randomly determine rarity of foil
-        rarity = random.choices(
-            ['m', 'r', 'u', 'c'], 
-            [1, 8, 23, 88]
-        )
-        
-        # If the foil is mythic, the foil can also be one of the 32 reprint commanders only found in foil etched versions
-        if rarity == 'm':
-            card = st.get_random_card(f's:cmr r:{rarity} (is:booster or (is:reprint frame:etched))')
-        # If the foil is not mythic, the foil can only be a card found in draft boosters of the foil's rarity
-        else:
-            card = st.get_random_card(f's:cmr r:{rarity} is:booster')
-        
-        # There is a fifty percent chance a legendary foil will be replaced with an foil etched version
-        card_name = card['name']
-        # Search for the legendary keyword in the typeline
-        if 'Legendary' in card['type_line']:
-            # If the card is legendary, replace it with the etched foil frame 50% of the time
-            etched_foil_rng = random.randint(0, 1)
-            if etched_foil_rng == 1:
-                # Replace the card with the foil etched version of the same name
-                card = st.search_for_cards(f's:cmr {card_name} frame:etched')[0]
-        
-        pack += [card]
-        
-        # Get 2 legendary cards of any rarity
-        legendary_rarity_1 = random.choices(
-            ['m', 'r', 'u'],
-            [1, 8, 23]
-        )
-        legendary_rarity_2 = random.choices(
-            ['m', 'r', 'u'],
-            [1, 8, 23]
-        )
-        
-        legendary_card_1 = st.get_random_card(f'set:{set_code} t:legendary is:booster r:{legendary_rarity_1}')
-        pack += [legendary_card_1]
-        legendary_card_1_name = legendary_card_1['name']
-        pack += [st.get_random_card(f'set:{set_code} t:legendary is:booster -"{legendary_card_1_name}" r:{legendary_rarity_2}')]
-        
-        # Get a rare or mythic (~14% chance of Mythic)
-        if random.randint(0, 7) == 7:
-            rare_card = st.get_random_card(f'set:{set_code} r=m is:booster -t:legendary')
-        else:
-            rare_card = st.get_random_card(f'set:{set_code} r=r is:booster -t:legendary')
 
-        pack += [rare_card]
-        
-        # Get 3 uncommons
-        cards = st.search_for_cards(f'set:{set_code} r=u -t:legendary is:booster')
-        uncommons = random.sample(list(cards), 3)
-        pack += uncommons
-        
-        # Get 13 commons
-        # Determine if Prismatic piper replaces one of the foils
+        # Get 1 foil
+        # Get a random card of weighted random rarity, found in booster packs.
+        # If the rarity is mythic, the foil can also be
+        # one of the 32 reprint commanders only found in foil etched versions.
+        card = st.get_random_card(
+            f's:cmr (is:booster or (is:reprint frame:etched))'
+            f' r:{random.choices(["m", "r", "u", "c"], [1, 8, 23, 88])[0]}'
+        )
+
+        # There is a 50% chance a legendary foil
+        # will be replaced with a foil etched version.
+        if 'Legendary' in card['type_line'] and \
+                'Creature' in card['type_line']:
+            if random.randint(0, 1) == 1:
+                card = st.search_for_cards(
+                    f's:cmr {card["name"]} frame:etched'
+                )[0]
+
+        pack += [card]
+
+        # Add 2 legendary cards of any rarity
+        rarities = random.choices(
+            ['m', 'r', 'u'],
+            [1, 8, 23],
+            k=2
+        )
+
+        legendary_card_1 = st.get_random_card(
+            f'set:{set_code} t:legendary is:booster r:{rarities[0]}'
+        )
+        pack += [
+            legendary_card_1,
+            st.get_random_card(
+                f'set:{set_code} t:legendary is:booster '
+                f'-"{legendary_card_1["name"]}" '
+                f'r:{rarities[1]}'
+            )
+        ]
+
+        # Add a rare or mythic (~14% chance of Mythic)
+        pack += [st.get_random_card(
+            f'set:{set_code} is:booster '
+            f'r={random.choices(["m", "r"], [1, 6])[0]}'
+        )]
+
+        # Add 3 uncommons
+        cards = st.search_for_cards(
+            f'set:{set_code} r=u -t:legendary is:booster'
+        )
+        pack += random.sample(list(cards), 3)
+
+        # Add 13 commons
+        cards = st.search_for_cards(
+            f'set:{set_code} r=c is:booster -"prismatic piper"'
+        )
+        # Prismatic Piper sometimes replaces one of the commons (~16.7% chance)
         if random.randint(0, 5) == 5:
-            cards = st.search_for_cards(f'set:{set_code} r=c is:booster -"prismatic piper"')
             commons = random.sample(list(cards), 12)
-            pack += commons
             pack += [st.get_card("The Prismatic Piper")]
         else:
-            cards = st.search_for_cards(f'set:{set_code} r=c is:booster -"prismatic piper"')
             commons = random.sample(list(cards), 13)
-            pack += commons
-        # Finish the pack
-        return pack
-    
-    def get_default_pack(set_code):
-        # The default pack distribution
-        # Get a rare or mythic (~14% chance of Mythic)
-        if random.randint(0, 7) == 7:
-            rare_card = st.get_random_card(f'set:{set_code} r=m is:booster')
-        else:
-            rare_card = st.get_random_card(f'set:{set_code} r=r is:booster')
-
-        pack = [rare_card]
-
-        # Get 3 uncommons
-        cards = st.search_for_cards(f'set:{set_code} r=u is:booster')
-        uncommons = random.sample(list(cards), 3)
-        pack += uncommons
-
-        # Get 10 commons
-        cards = st.search_for_cards(f'set:{set_code} r=c is:booster')
-        commons = random.sample(list(cards), 10)
         pack += commons
 
         return pack
-        
-    switcher = { 
+
+    def get_default_pack():
+        # The default pack distribution
+        pack = []
+
+        # Add 1 basic land
+        pack += [st.get_random_card(f'set:{set_code} is:booster t:basic')]
+
+        # Add a rare or mythic (~14% chance of Mythic)
+        pack += [st.get_random_card(
+            f'set:{set_code} is:booster '
+            f'r={random.choices(["m", "r"], [1, 6])[0]}'
+        )]
+
+        # Add 3 uncommons
+        cards = st.search_for_cards(f'set:{set_code} r=u is:booster')
+        pack += random.sample(list(cards), 3)
+
+        # Add 10 commons
+        cards = st.search_for_cards(f'set:{set_code} r=c is:booster -t:basic')
+        pack += random.sample(list(cards), 10)
+
+        return pack
+
+    alt_distributions = {
         'cmr': get_cmr_pack
     }
-    pack_constructor = switcher.get(set_code, get_default_pack)
-    return pack_constructor(set_code)
+
+    return alt_distributions.get(set_code, get_default_pack)()
 
 
 def get_limited_pool(set_code, number_of_players, packs_per_player):
