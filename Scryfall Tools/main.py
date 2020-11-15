@@ -18,42 +18,6 @@ modes = [
 ]
 
 
-def main(
-        mode, output_path, size='normal',
-        query='', set_code=None, decklist_path=None
-):
-    decks = {}
-
-    if mode == 'random_commander':
-        decklist, deckname = create_random_commander_deck(
-            verbose=True,
-            q=query
-        )
-        if not decklist:
-            return
-        decks[deckname] = decklist
-    elif mode == 'decklist':
-        if not decklist_path:
-            raise TypeError('Please provide a decklist path')
-        with open(decklist_path, mode='r') as decklist_file:
-            # TODO: Make this its own file
-            # Handle sideboards, sets
-            deckname = os.path.splitext(os.path.basename(decklist_path))[0]
-            decklist_array = decklist_file.readlines()
-            # Flip decklist_array ['[amount] [cardname]']
-            # to dict {[cardname]: [amount]}
-            deck_dict = {
-                ' '.join(entry.split(' ')[1:]).strip()
-                : int(entry.split(' ')[0])
-                for entry in decklist_array
-                if entry.strip() and not entry.startswith('//')
-            }
-            decklist = get_collection(deck_dict)
-            decks[deckname] = decklist
-
-    elif mode == 'sealed_pool':
-        decks = get_sealed_pool(set_code=set_code)
-
 def decklist(args):
     decks = parse_decklist(args.file)
     collected_decks = {}
@@ -72,7 +36,8 @@ def draft(args):
         decks=get_limited_pool(set_code=args.code, number_of_packs=3),
         path=args.out,
         card_size_text=args.size,
-        name=f'Draft Pool {args.code.upper()} ({date.today()})'
+        name=f'Draft Pool {args.code.upper()} ({date.today()})',
+        log_card_names=False
     )
 
 
@@ -98,6 +63,7 @@ def sealed(args):
         path=args.out,
         card_size_text=args.size,
         name=f'Sealed Pool {args.code.upper()} ({date.today()})',
+        log_card_names=False
     )
 
 
@@ -138,6 +104,7 @@ if __name__ == '__main__':
         metavar='SIZE'
     )
 
+    # GIVEN DECKLIST
     parser_decklist = subparsers.add_parser(
         'decklist',
         help='Create a TTS deck for the provided decklist file',
@@ -150,6 +117,7 @@ if __name__ == '__main__':
         type=argparse.FileType('r')
     )
 
+    # DRAFT PACKS
     parser_draft = subparsers.add_parser(
         'draft',
         help='Create a TTS deck for a draft pool from the provided set',
@@ -161,6 +129,7 @@ if __name__ == '__main__':
         help='3 letter set code',
     )
 
+    # RANDOM COMMANDER DECK
     parser_random_commander = subparsers.add_parser(
         'random_commander',
         help='Create a TTS deck for a random EDH commander',
@@ -179,6 +148,7 @@ if __name__ == '__main__':
         default=''
     )
 
+    # SEALED POOL
     parser_sealed = subparsers.add_parser(
         'sealed',
         help='Create a TTS deck for a sealed pool from the provided set',
