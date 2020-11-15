@@ -57,7 +57,7 @@ def get_pack(set_code):
         cards = st.search_for_cards(
             f'set:{set_code} r=u -t:legendary is:booster'
         )
-        pack += [random.sample(list(cards), 3)]
+        pack += random.sample(list(cards), 3)
 
         # Add 13 commons
         cards = st.search_for_cards(
