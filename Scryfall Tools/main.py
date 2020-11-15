@@ -6,6 +6,7 @@ from datetime import date
 from TTS_MTG_deck_creator import create_tts_mtg_decks
 from constants import CARD_SIZES
 from limited_pools import get_limited_pool
+from decklist_parser import parse_decklist
 from random_commander_deck import create_random_commander_deck
 from scryfall_tools import get_collection
 
@@ -54,21 +55,13 @@ def main(
         decks = get_sealed_pool(set_code=set_code)
 
 def decklist(args):
-    # Handle sideboards, sets
-    deck_name = os.path.splitext(os.path.basename(args.file.name))[0]
-    decklist_array = args.file.readlines()
-
-    # Flip decklist_array ['[amount] [cardname]']
-    # to {[cardname]: [amount]}
-    deck_dict = {
-        ' '.join(entry.split(' ')[1:]).strip()
-        : int(entry.split(' ')[0])
-        for entry in decklist_array
-        if entry.strip() and not entry.startswith('//')
-    }
+    decks = parse_decklist(args.file)
+    collected_decks = {}
+    for deckname, decklist in decks.items():
+        collected_decks[deckname] = get_collection(decklist)
 
     create_tts_mtg_decks(
-        decks={deck_name: get_collection(deck_dict)},
+        decks=collected_decks,
         path=args.out,
         card_size_text=args.size,
     )

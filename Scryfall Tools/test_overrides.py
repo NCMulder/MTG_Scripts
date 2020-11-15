@@ -8,12 +8,12 @@ from scryfall_tools import get_collection
 
 
 def main(out, name, size):
-    deck_dict = {
-        cardname: 1
+    deck_array = [
+        ({'name': cardname}, 1)
         for cardname in cardname_identifier_overrides.keys()
-    }
+    ]
 
-    decklist = get_collection(deck_dict)
+    decklist = get_collection(deck_array)
 
     create_tts_mtg_decks(
         {name: decklist},
