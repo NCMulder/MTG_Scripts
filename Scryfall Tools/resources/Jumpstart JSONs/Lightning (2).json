@@ -1,0 +1,406 @@
+{
+    "ObjectStates": [
+        {
+            "Transform": {
+                "posX": 0,
+                "posY": 1.0,
+                "posZ": -0.0,
+                "rotX": 0,
+                "rotY": 180,
+                "rotZ": 180,
+                "scaleX": 1,
+                "scaleY": 1,
+                "scaleZ": 1
+            },
+            "Name": "DeckCustom",
+            "Nickname": "Lightning",
+            "CustomDeck": {
+                "15": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/0ku2m4w0dzs9xfb/TTS_2020-11-14-17_10_16.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "14": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/dj6tagew1wnjhdb/TTS_2020-11-14-17_09_39.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "2": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/tfm0ms0ehcn756t/TTS_2020-11-14-17_02_13.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "5": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/fd61selmz17fltw/TTS_2020-11-14-17_04_14.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                }
+            },
+            "ContainedObjects": [
+                {
+                    "Name": "Card",
+                    "Nickname": "Ball Lightning",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1500
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Lightning Phoenix",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1414
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Living Lightning",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1415
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Weaver of Lightning",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1413
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Lightning Visionary",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1416
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Lightning Visionary",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1416
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Lightning Elemental",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1417
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Lightning-Core Excavator",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 222
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Chain Lightning",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1501
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Lightning Axe",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1419
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Riddle of Lightning",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1502
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Lightning Diadem",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1421
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Thriving Bluff",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 509
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1422
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1422
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1422
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1422
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1422
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1422
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1422
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Lightning",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1423
+                }
+            ],
+            "DeckIDs": [
+                1500,
+                1414,
+                1415,
+                1413,
+                1416,
+                1416,
+                1417,
+                222,
+                1501,
+                1419,
+                1502,
+                1421,
+                509,
+                1422,
+                1422,
+                1422,
+                1422,
+                1422,
+                1422,
+                1422,
+                1423
+            ]
+        }
+    ]
+}

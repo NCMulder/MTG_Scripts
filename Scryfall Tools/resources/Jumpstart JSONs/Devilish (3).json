@@ -1,0 +1,400 @@
+{
+    "ObjectStates": [
+        {
+            "Transform": {
+                "posX": 0,
+                "posY": 1.0,
+                "posZ": -0.0,
+                "rotX": 0,
+                "rotY": 180,
+                "rotZ": 180,
+                "scaleX": 1,
+                "scaleY": 1,
+                "scaleZ": 1
+            },
+            "Name": "DeckCustom",
+            "Nickname": "Devilish",
+            "CustomDeck": {
+                "5": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/fd61selmz17fltw/TTS_2020-11-14-17_04_14.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "2": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/tfm0ms0ehcn756t/TTS_2020-11-14-17_02_13.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "6": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/fbx2cnkdyfpiub7/TTS_2020-11-14-17_04_49.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                }
+            },
+            "ContainedObjects": [
+                {
+                    "Name": "Card",
+                    "Nickname": "Chained Brute",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 514
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Spiteful Prankster",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 515
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Lightning-Core Excavator",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 222
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Torch Fiend",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 516
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Brash Taunter",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 603
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Havoc Jester",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 517
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Hobblefiend",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 518
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Pitchburn Devils",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 519
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Act of Treason",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 604
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Traitorous Greed",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 520
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Dance with Devils",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 521
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Collateral Damage",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 522
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Thriving Bluff",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 509
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 523
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 523
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 523
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 523
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 523
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 523
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Mountain",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 523
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Devilish",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 600
+                }
+            ],
+            "DeckIDs": [
+                514,
+                515,
+                222,
+                516,
+                603,
+                517,
+                518,
+                519,
+                604,
+                520,
+                521,
+                522,
+                509,
+                523,
+                523,
+                523,
+                523,
+                523,
+                523,
+                523,
+                600
+            ]
+        }
+    ]
+}

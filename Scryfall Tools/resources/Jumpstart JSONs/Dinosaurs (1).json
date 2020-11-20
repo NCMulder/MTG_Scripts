@@ -1,0 +1,394 @@
+{
+    "ObjectStates": [
+        {
+            "Transform": {
+                "posX": 0,
+                "posY": 1.0,
+                "posZ": -0.0,
+                "rotX": 0,
+                "rotY": 180,
+                "rotZ": 180,
+                "scaleX": 1,
+                "scaleY": 1,
+                "scaleZ": 1
+            },
+            "Name": "DeckCustom",
+            "Nickname": "Dinosaurs",
+            "CustomDeck": {
+                "6": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/fbx2cnkdyfpiub7/TTS_2020-11-14-17_04_49.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "4": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/e7fo5mi70xudqqo/TTS_2020-11-14-17_03_32.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                }
+            },
+            "ContainedObjects": [
+                {
+                    "Name": "Card",
+                    "Nickname": "Ghalta, Primal Hunger",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 608
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Drover of the Mighty",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 609
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Orazca Frillback",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 610
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Thrashing Brontodon",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 611
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Colossal Dreadmaw",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 612
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Ornery Dilophosaur",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 613
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Drowsing Tyrannodon",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 614
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Savage Stomp",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 615
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Commune with Dinosaurs",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 616
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Cultivate",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 617
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Crushing Canopy",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 415
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Setessan Training",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 618
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Thriving Grove",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 417
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Forest",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 619
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Forest",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 619
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Forest",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 619
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Forest",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 619
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Forest",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 619
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Forest",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 619
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Forest",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 619
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Dinosaurs",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 620
+                }
+            ],
+            "DeckIDs": [
+                608,
+                609,
+                610,
+                611,
+                612,
+                613,
+                614,
+                615,
+                616,
+                617,
+                415,
+                618,
+                417,
+                619,
+                619,
+                619,
+                619,
+                619,
+                619,
+                619,
+                620
+            ]
+        }
+    ]
+}

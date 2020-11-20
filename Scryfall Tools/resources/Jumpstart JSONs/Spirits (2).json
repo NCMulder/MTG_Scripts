@@ -1,0 +1,400 @@
+{
+    "ObjectStates": [
+        {
+            "Transform": {
+                "posX": 0,
+                "posY": 1.0,
+                "posZ": -0.0,
+                "rotX": 0,
+                "rotY": 180,
+                "rotZ": 180,
+                "scaleX": 1,
+                "scaleY": 1,
+                "scaleZ": 1
+            },
+            "Name": "DeckCustom",
+            "Nickname": "Spirits",
+            "CustomDeck": {
+                "24": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/aqbkzgixy8yhexv/TTS_2020-11-14-17_16_27.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "18": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/kk8h9t7ogbyw46t/TTS_2020-11-14-17_12_18.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "1": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/vihgk9zz5uhh1pk/TTS_2020-11-14-17_01_29.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                }
+            },
+            "ContainedObjects": [
+                {
+                    "Name": "Card",
+                    "Nickname": "Rattlechains",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2415
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Battleground Geist",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2405
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Departed Deckhand",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1807
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Nebelgast Herald",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2406
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Shacklegeist",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2408
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Roaming Ghostlight",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 104
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Tome Anima",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2409
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Winged Words",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2410
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Rewind",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2416
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Rookie Mistake",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 109
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Frost Breath",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 116
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Capture Sphere",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 111
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Thriving Isle",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 112
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Island",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2413
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Island",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2413
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Island",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2413
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Island",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2413
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Island",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2413
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Island",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2413
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Island",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2413
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Spirits",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 2414
+                }
+            ],
+            "DeckIDs": [
+                2415,
+                2405,
+                1807,
+                2406,
+                2408,
+                104,
+                2409,
+                2410,
+                2416,
+                109,
+                116,
+                111,
+                112,
+                2413,
+                2413,
+                2413,
+                2413,
+                2413,
+                2413,
+                2413,
+                2414
+            ]
+        }
+    ]
+}

@@ -1,0 +1,412 @@
+{
+    "ObjectStates": [
+        {
+            "Transform": {
+                "posX": 0,
+                "posY": 1.0,
+                "posZ": -0.0,
+                "rotX": 0,
+                "rotY": 180,
+                "rotZ": 180,
+                "scaleX": 1,
+                "scaleY": 1,
+                "scaleZ": 1
+            },
+            "Name": "DeckCustom",
+            "Nickname": "Enchanted",
+            "CustomDeck": {
+                "10": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/4g7otqcqtrp4vqb/TTS_2020-11-14-17_07_16.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "8": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/xdlnvmy66oulw2e/TTS_2020-11-14-17_06_01.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "3": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/mmzvb8w1sgkyw8k/TTS_2020-11-14-17_02_55.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "2": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/tfm0ms0ehcn756t/TTS_2020-11-14-17_02_13.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                },
+                "4": {
+                    "NumWidth": 5,
+                    "NumHeight": 5,
+                    "FaceURL": "https://www.dropbox.com/s/e7fo5mi70xudqqo/TTS_2020-11-14-17_03_32.png?dl=1",
+                    "BackURL": "https://www.dropbox.com/s/9aecuelfwga8bv4/back_1.jpg?dl=1"
+                }
+            },
+            "ContainedObjects": [
+                {
+                    "Name": "Card",
+                    "Nickname": "Kor Spiritdancer",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1012
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Blessed Spirits",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1013
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Stone Haven Pilgrim",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 806
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Trusty Retriever",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 817
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Knight of the Tusk",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 318
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Anointed Chorister",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 203
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Face of Divinity",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1014
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Knightly Valor",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1015
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Forced Worship",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1016
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Indomitable Will",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1017
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Faith's Fetters",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 402
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Dub",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1018
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Thriving Heath",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 210
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Plains",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1019
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Plains",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1019
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Plains",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1019
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Plains",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1019
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Plains",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1019
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Plains",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1019
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Plains",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1019
+                },
+                {
+                    "Name": "Card",
+                    "Nickname": "Enchanted",
+                    "Transform": {
+                        "posX": 0.0,
+                        "posY": 0.0,
+                        "posZ": 0.0,
+                        "rotX": 0.0,
+                        "rotY": 180,
+                        "rotZ": 180,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "scaleZ": 1
+                    },
+                    "CardID": 1020
+                }
+            ],
+            "DeckIDs": [
+                1012,
+                1013,
+                806,
+                817,
+                318,
+                203,
+                1014,
+                1015,
+                1016,
+                1017,
+                402,
+                1018,
+                210,
+                1019,
+                1019,
+                1019,
+                1019,
+                1019,
+                1019,
+                1019,
+                1020
+            ]
+        }
+    ]
+}

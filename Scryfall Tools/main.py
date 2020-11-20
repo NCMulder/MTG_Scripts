@@ -9,6 +9,7 @@ from limited_pools import get_limited_pool
 from decklist_parser import parse_decklist
 from random_commander_deck import create_random_commander_deck
 from scryfall_tools import get_collection
+import jumpstart_combiner as js_c
 
 modes = [
     'random_commander',
@@ -75,6 +76,21 @@ def sealed(args):
         packs_per_player=args.packs,
         log_card_names=False
     )
+
+def jumpstart(args):
+    if args.mode == 'classic':
+        js_c.classic_jumpstart(
+            pools=args.players,
+            out=args.out,
+            unnamed=args.unnamed
+        )
+    else:
+        js_c.random_jumpstart(
+            decks=args.players,
+            out=args.out,
+            unnamed=args.unnamed
+        )
+
 
 
 if __name__ == '__main__':
@@ -191,6 +207,31 @@ if __name__ == '__main__':
         '-pl', '--players',
         help='number of players (default: %(default)d)',
         default=1,
+        type=int
+    )
+
+    # JUMPSTART POOL
+    parser_jumpstart = subparsers.add_parser(
+        'jumpstart',
+        help='Create a TTS deck for Jumpstart',
+        parents=[parent_parser]
+    )
+    parser_jumpstart.set_defaults(func=jumpstart)
+    parser_jumpstart.add_argument(
+        'mode',
+        help='whether to use classic or random mode',
+        choices=['classic', 'random']
+    )
+    parser_jumpstart.add_argument(
+        '-un', '--unnamed',
+        help='whether to spoil the decks/packs',
+        type=bool,
+        default=False
+    )
+    parser_jumpstart.add_argument(
+        '-pl', '--players',
+        help='number of players (default: %(default)d)',
+        default=2,
         type=int
     )
 
