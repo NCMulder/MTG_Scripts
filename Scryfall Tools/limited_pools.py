@@ -41,16 +41,16 @@ def get_pack(set_code):
         pack += [
             legendary_card_1,
             st.get_random_card(
-                f'set:{set_code} t:legendary is:booster '
-                f'-"{legendary_card_1["name"]}" '
-                f'r:{rarities[1]}'
+                f'set:{set_code} t:legendary is:booster'
+                f' -"{legendary_card_1["name"]}"'
+                f' r:{rarities[1]}'
             )
         ]
 
-        # Add a rare or mythic (~14% chance of Mythic)
+        # Add a non-legendary rare or mythic (~14% chance of Mythic)
         pack += [st.get_random_card(
-            f'set:{set_code} is:booster '
-            f'r={random.choices(["m", "r"], [1, 6])[0]}'
+            f'set:{set_code} -t:legendary is:booster'
+            f' r={random.choices(["m", "r"], [1, 6])[0]}'
         )]
 
         # Add 3 uncommons
@@ -61,10 +61,10 @@ def get_pack(set_code):
 
         # Add 13 commons
         cards = st.search_for_cards(
-            f'set:{set_code} r=c is:booster -"prismatic piper"'
+            f'set:{set_code} r=c is:booster -"Prismatic Piper"'
         )
         # Prismatic Piper sometimes replaces one of the commons (~16.7% chance)
-        if random.randint(0, 5) == 5:
+        if random.randint(1, 6) == 1:
             commons = random.sample(list(cards), 12)
             pack += [st.get_card("The Prismatic Piper")]
         else:
@@ -116,4 +116,14 @@ def get_limited_pool(set_code, number_of_players, packs_per_player):
             for i in range(packs_per_player)
         ]
 
-    return {name: get_pack(set_code) for name in names}
+    result = {name: get_pack(set_code) for name in names}
+
+    result['Basics'] = [
+        st.get_card('Plains'),
+        st.get_card('Island'),
+        st.get_card('Swamp'),
+        st.get_card('Mountain'),
+        st.get_card('Forest'),
+    ]
+
+    return result

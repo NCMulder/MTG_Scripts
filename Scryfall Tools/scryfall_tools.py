@@ -1,5 +1,6 @@
 # Bundles some Scryfall related tools together
 # to use in other scripts or from the command line
+import time
 
 import requests
 
@@ -11,15 +12,17 @@ def get_random_card(q=None, verbose=False):
     See https://scryfall.com/docs/api/cards/random
     """
 
+    time.sleep(0.1)
     result = requests.get(
         f'https://api.scryfall.com/cards/random?{f"q={q}" if q else ""}'
     ).json()
+
     if result['object'] == 'card':
         if verbose:
             print('Found', result['name'])
         return result
     if result['object'] == 'error':
-        print(result["details"])
+        print(result['details'])
 
     return None
 
@@ -29,6 +32,7 @@ def get_card(cardname, uri=None, fuzzy=False, verbose=False):
     See https://scryfall.com/docs/api/cards/named
     """
 
+    time.sleep(0.1)
     if uri:
         result = requests.get(uri).json()
     else:
@@ -43,7 +47,7 @@ def get_card(cardname, uri=None, fuzzy=False, verbose=False):
         return result
 
     if result['object'] == 'error':
-        print(result["details"])
+        print(result['details'])
 
     return None
 
@@ -53,6 +57,7 @@ def get_card_image(cardname='', version='large', uri=''):
     See https://scryfall.com/docs/api/images
     """
 
+    time.sleep(0.1)
     if uri:
         result = requests.get(uri).content
     else:
@@ -67,6 +72,7 @@ def get_card_image(cardname='', version='large', uri=''):
 def search_for_cards(query):
     """Return a list of search results."""
 
+    time.sleep(0.1)
     cards = requests.get(
         f'https://api.scryfall.com/cards/search?q={query}'
     ).json()
@@ -105,6 +111,7 @@ def get_collection(decklist):
             # or the end of the decklist:
             # Retrieve the cards and continue parsing lines.
             if len(identifiers) == 75 or idx + 1 == len(decklist):
+                time.sleep(0.1)
                 cards = requests.post(
                     'https://api.scryfall.com/cards/collection',
                     json={'identifiers': identifiers}
