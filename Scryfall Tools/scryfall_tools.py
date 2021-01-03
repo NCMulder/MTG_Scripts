@@ -119,6 +119,15 @@ def get_collection(decklist):
                 results.append(cards.json())
                 identifiers = []
 
-    # Merge the results
+    # Handle bad requests
+    for result in results:
+        if 'not_found' in result and len(result['not_found']) > 0:
+            print(f'Not Found: {result["not_found"]}')
+        if 'warnings' in result:
+            print(f'Warnings: {result["warnings"]}')
+        if 'data' not in result:
+            raise Exception(f'{result["status"]} - {result["details"]}')
+
+    # Merge the results from multiple requests
     cards = [card for d in results for card in d['data']]
     return cards

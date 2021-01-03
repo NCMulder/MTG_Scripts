@@ -1,6 +1,7 @@
 *.txt
 *.html
 *.ini
+*.csv
 !config_default.ini
 
 # Byte-compiled / optimized / DLL files
