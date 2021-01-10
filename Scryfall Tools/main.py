@@ -5,7 +5,7 @@ from datetime import date
 
 from TTS_MTG_deck_creator import create_tts_mtg_decks
 from constants import CARD_SIZES
-from limited_pools import get_limited_pool
+from limited_pools import get_limited_pool, get_chaos
 from decklist_parser import parse_decklist
 from random_commander_deck import create_random_commander_deck
 from scryfall_tools import get_collection
@@ -28,6 +28,20 @@ def decklist(args):
         decks=collected_decks,
         path=args.out,
         card_size_text=args.size,
+    )
+
+
+def chaos_draft(args):
+    create_tts_mtg_decks(
+        decks=get_chaos(
+            number_of_players=args.players,
+            packs_per_player=args.packs
+        ),
+        path=args.out,
+        card_size_text=args.size,
+        name=f'Chaos Draft Pool ({date.today()})',
+        packs_per_player=args.packs,
+        log_card_names=False
     )
 
 
@@ -138,6 +152,26 @@ if __name__ == '__main__':
         'code',
         help='3 letter set code',
     )
+    parser_draft.add_argument(
+        '-pa', '--packs',
+        help='number of packs per player (default: %(default)d)',
+        default=3,
+        type=int
+    )
+    parser_draft.add_argument(
+        '-pl', '--players',
+        help='number of players (default: %(default)d)',
+        default=1,
+        type=int
+    )
+
+    # CHAOS PACKS
+    parser_draft = subparsers.add_parser(
+        'chaos_draft',
+        help='Create a TTS deck for a chaos draft pool',
+        parents=[parent_parser]
+    )
+    parser_draft.set_defaults(func=chaos_draft)
     parser_draft.add_argument(
         '-pa', '--packs',
         help='number of packs per player (default: %(default)d)',

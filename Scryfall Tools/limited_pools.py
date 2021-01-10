@@ -3,6 +3,42 @@ import random
 import scryfall_tools as st
 
 
+def get_chaos(number_of_players, packs_per_player, one_set=True):
+    sets = st.get_set_list()['data']
+    # Filter booster sets
+    b_types = [
+        'core',
+        'expansion',
+        'masters',
+        'draft_innovation'
+    ]
+    b_sets = [s for s in sets if s['set_type'] in b_types]
+
+    if number_of_players == 1:
+        names = [
+            f'Chaos - Pack {i + 1}'
+            for i in range(packs_per_player)
+        ]
+    else:
+        names = [
+            f'Chaos - Player {j + 1}, Pack {i + 1}'
+            for j in range(number_of_players)
+            for i in range(packs_per_player)
+        ]
+
+    result = {name: get_pack(random.choice(b_sets)['code']) for name in names}
+
+    result['Basics'] = [
+        st.get_card('Plains'),
+        st.get_card('Island'),
+        st.get_card('Swamp'),
+        st.get_card('Mountain'),
+        st.get_card('Forest'),
+    ]
+
+    return result
+
+
 def get_pack(set_code):
     def get_cmr_pack():
         # Commander Legends pack distribution        
@@ -78,13 +114,21 @@ def get_pack(set_code):
         pack = []
 
         # Add 1 basic land
-        pack += [st.get_random_card(f'set:{set_code} is:booster t:basic')]
+        basic = st.get_random_card(f'set:{set_code} is:booster t:basic')
+        if not basic:
+            basic = st.get_random_card(f'set:LEA is:booster t:basic')
+        pack += [basic]
 
         # Add a rare or mythic (~14% chance of Mythic)
-        pack += [st.get_random_card(
-            f'set:{set_code} is:booster '
-            f'r={random.choices(["m", "r"], [1, 6])[0]}'
+        r_or_m = [st.get_random_card(
+                f'set:{set_code} is:booster '
+                f'r={random.choices(["m", "r"], [1, 6])[0]}'
         )]
+        if not r_or_m:
+            r_or_m = [st.get_random_card(
+                    f'set:{set_code} is:booster r=r'
+            )]
+        pack += [r_or_m]
 
         # Add 3 uncommons
         cards = st.search_for_cards(f'set:{set_code} r=u is:booster')
@@ -96,11 +140,16 @@ def get_pack(set_code):
 
         return pack
 
+    print(set_code)
+
     alt_distributions = {
         'cmr': get_cmr_pack
     }
 
-    return alt_distributions.get(set_code, get_default_pack)()
+    pck = alt_distributions.get(set_code, get_default_pack)()
+    ## [print(c) for c in pck]
+
+    return pck
 
 
 def get_limited_pool(set_code, number_of_players, packs_per_player):

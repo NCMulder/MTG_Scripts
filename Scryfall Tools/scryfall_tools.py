@@ -7,6 +7,26 @@ import requests
 from overrides import cardname_identifier_overrides
 
 
+def get_set_list(verbose=False):
+    """Gets a random set from Scryfall.
+    See https://scryfall.com/docs/api/sets/all
+    """
+
+    time.sleep(0.1)
+    result = requests.get(
+        f'https://api.scryfall.com/sets'
+    ).json()
+
+    if result['object'] == 'list':
+        if verbose:
+            print('Got the set list')
+        return result
+    if result['object'] == 'error':
+        print(result['details'])
+
+    return None
+
+
 def get_random_card(q=None, verbose=False):
     """Gets a random card from Scryfall.
     See https://scryfall.com/docs/api/cards/random
