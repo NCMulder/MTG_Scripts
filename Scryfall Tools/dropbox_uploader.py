@@ -17,7 +17,8 @@ def upload_to_dropbox(file, file_name):
     if not api_key:
         raise NameError(
             'Dropbox API key not defined in config.ini\n'
-            'See https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/'
+            'See https://blogs.dropbox.com/developers/2014/05/'
+            'generate-an-access-token-for-your-own-account/'
         )
 
     # Create a dropbox object using an API v2 key
