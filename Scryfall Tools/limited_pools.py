@@ -3,7 +3,7 @@ import random
 import scryfall_tools as st
 
 
-def get_chaos(number_of_players, packs_per_player, one_set=True):
+def get_chaos(number_of_players, packs_per_player, unique_packs=True, one_set=True, unnamed=True):
     sets = st.get_set_list()['data']
     # Filter booster sets
     b_types = [
@@ -12,21 +12,36 @@ def get_chaos(number_of_players, packs_per_player, one_set=True):
         'masters',
         'draft_innovation'
     ]
-    b_sets = [s for s in sets if s['set_type'] in b_types]
+    b_sets = [
+        (s['code'], s['name'])
+        for s in sets
+        if s['set_type'] in b_types and not s['digital']
+    ]
+    if unique_packs:
+        chosen_sets = random.sample(
+            b_sets,
+            packs_per_player * number_of_players
+        )
+    else:
+        chosen_sets = random.choices(
+            b_sets,
+            k=packs_per_player * number_of_players
+        )
+    print(chosen_sets)
 
     if number_of_players == 1:
         names = [
-            f'Chaos - Pack {i + 1}'
+            f'{"Chaos" if unnamed else chosen_sets[i][1]} - Pack {i + 1}'
             for i in range(packs_per_player)
         ]
     else:
         names = [
-            f'Chaos - Player {j + 1}, Pack {i + 1}'
+            f'{"Chaos" if unnamed else chosen_sets[i][1]} - Player {j + 1}, Pack {i + 1}'
             for j in range(number_of_players)
             for i in range(packs_per_player)
         ]
 
-    result = {name: get_pack(random.choice(b_sets)['code']) for name in names}
+    result = {name: get_pack(chosen_sets[i][0]) for i, name in enumerate(names)}
 
     result['Basics'] = [
         st.get_card('Plains'),
@@ -116,18 +131,18 @@ def get_pack(set_code):
         # Add 1 basic land
         basic = st.get_random_card(f'set:{set_code} is:booster t:basic')
         if not basic:
-            basic = st.get_random_card(f'set:LEA is:booster t:basic')
+            basic = st.get_random_card(f'set:LEB is:booster t:basic')
         pack += [basic]
 
         # Add a rare or mythic (~14% chance of Mythic)
-        r_or_m = [st.get_random_card(
+        r_or_m = st.get_random_card(
                 f'set:{set_code} is:booster '
                 f'r={random.choices(["m", "r"], [1, 6])[0]}'
-        )]
+        )
         if not r_or_m:
-            r_or_m = [st.get_random_card(
+            r_or_m = st.get_random_card(
                     f'set:{set_code} is:booster r=r'
-            )]
+            )
         pack += [r_or_m]
 
         # Add 3 uncommons
