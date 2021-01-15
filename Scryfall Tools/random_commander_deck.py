@@ -25,14 +25,16 @@ def get_edhrec_average_deck(commander):
 
     basic_name = re.sub(r'[^a-zA-Z\- ]', '', name)
     hyphen_name = re.sub(r' ', '-', basic_name).lower()
-    url = f'https://edhrec-json.s3.amazonaws.com/en/decks/{hyphen_name}.json'
+    url = f'https://edhrec-json.s3.amazonaws.com/en/average-decks/{hyphen_name}.json'
 
     random_deck_resp = requests.get(url)
     random_deck_json = random_deck_resp.json()
+    print(random_deck_json)
     list_ugly = random_deck_json['description']
     list_cards = list_ugly.split('</a>')[2]
 
     decklist_raw = list_cards.split('\n')
+    print(decklist_raw)
     pattern = re.compile(r'(\d*) (.*)$')
     decklist_filtered = [
         ({'name' : match.group(2)}, int(match.group(1)))
