@@ -228,6 +228,10 @@ _lands['basic']['znr'] = {
     }
 }
 
+_lands['snow']['khm'] = {
+    key: {**value, 'set': 'khm'}
+    for key, value in _lands['snow']['def'].items()
+}
 _lands['snow']['mh1'] = {
     key: {**value, 'set': 'mh1'}
     for key, value in _lands['snow']['def'].items()
@@ -319,19 +323,18 @@ _lands['pathway']['khm'] = {
 _lands['pathway']['znr'] = {
     **_lands['pathway']['def'],
 
-    # TODO: Add these when they get released
-    # 'Barkchannel Pathway // Tidechannel Pathway': {
-    #     'name': 'Barkchannel Pathway', 'set': 'slu'
-    # },
-    # 'Blightstep Pathway // Searstep Pathway': {
-    #     'name': 'Blightstep Pathway', 'set': 'slu'
-    # },
-    # 'Darkbore Pathway // Slitherbore Pathway': {
-    #     'name': 'Darkbore Pathway', 'set': 'slu'
-    # },
-    # 'Hengegate Pathway // Mistgate Pathway': {
-    #     'name': 'Hengegate Pathway', 'set': 'slu'
-    # },
+    'Barkchannel Pathway // Tidechannel Pathway': {
+        'name': 'Barkchannel Pathway', 'set': 'slu'
+    },
+    'Blightstep Pathway // Searstep Pathway': {
+        'name': 'Blightstep Pathway', 'set': 'slu'
+    },
+    'Darkbore Pathway // Slitherbore Pathway': {
+        'name': 'Darkbore Pathway', 'set': 'slu'
+    },
+    'Hengegate Pathway // Mistgate Pathway': {
+        'name': 'Hengegate Pathway', 'set': 'slu'
+    },
 }
 
 _lands['shock']['exp'] = {
@@ -632,7 +635,7 @@ _transform_cards_ixalan = {
 
 cardname_identifier_overrides = {
     **_lands['basic']['znr'],
-    **_lands['snow']['mh1'],
+    **_lands['snow']['khm'],
     **_lands['wastes']['ula'],
 
     **_lands['bond']['ally']['zne'],
