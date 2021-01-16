@@ -1,0 +1,4 @@
+[submodule "Scryfall Tools/BoosterBuilder"]
+	path = Scryfall Tools/BoosterBuilder
+	url = https://github.com/NCMulder/BoosterBuilder
+	branch = main
