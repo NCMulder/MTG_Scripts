@@ -1,47 +1,25 @@
 import random
 
 import scryfall_tools as st
+from BoosterBuilder.booster_string import booster_builder
 
 
-def get_chaos(number_of_players, packs_per_player, unique_packs=True, one_set=True, unnamed=True):
-    sets = st.get_set_list()['data']
-    # Filter booster sets
-    b_types = [
-        'core',
-        'expansion',
-        'masters',
-        'draft_innovation'
-    ]
-    b_sets = [
-        (s['code'], s['name'])
-        for s in sets
-        if s['set_type'] in b_types and not s['digital']
-    ]
-    if unique_packs:
-        chosen_sets = random.sample(
-            b_sets,
-            packs_per_player * number_of_players
-        )
-    else:
-        chosen_sets = random.choices(
-            b_sets,
-            k=packs_per_player * number_of_players
-        )
-    print(chosen_sets)
-
-    if number_of_players == 1:
-        names = [
-            f'{"Chaos" if unnamed else chosen_sets[i][1]} - Pack {i + 1}'
-            for i in range(packs_per_player)
-        ]
-    else:
-        names = [
-            f'{"Chaos" if unnamed else chosen_sets[i][1]} - Player {j + 1}, Pack {i + 1}'
-            for j in range(number_of_players)
-            for i in range(packs_per_player)
-        ]
-
-    result = {name: get_pack(chosen_sets[i][0]) for i, name in enumerate(names)}
+def get_chaos(
+    number_of_players,
+    packs_per_player,
+    unique_packs=True,
+    one_set=True,
+    unnamed=True
+):
+    boosters = booster_builder.get_random_boosters(
+        number_of_players,
+        packs_per_player,
+        unique_packs=unique_packs
+    )
+    result = {
+        f'Pack {name.split(" - ")[0] + 1}': booster
+        for name, booster in boosters.items()
+    }
 
     result['Basics'] = [
         st.get_card('Plains'),
