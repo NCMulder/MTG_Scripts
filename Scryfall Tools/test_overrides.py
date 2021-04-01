@@ -7,7 +7,7 @@ from overrides import cardname_identifier_overrides
 from scryfall_tools import get_collection, search_for_cards
 
 
-def main(out, name, size, etched, lands, sld):
+def main(out, name, size, etched, lands, sld, sta):
     deck_array = [
         ({'name': cardname}, 1)
         for cardname in cardname_identifier_overrides.keys()
@@ -58,6 +58,13 @@ def main(out, name, size, etched, lands, sld):
         control_array = [
             ({'name': card['name']}, 1)
             for card in search_for_cards('set:sld')
+        ]
+
+    elif sta:
+        name += ' - STA'
+        control_array = [
+            ({'name': card['name']}, 1)
+            for card in search_for_cards('set:sta')
         ]
 
     else:
@@ -119,10 +126,16 @@ if __name__ == '__main__':
         help='Test Secret Lair cards specifically',
         action='store_true'
     )
+    parser.add_argument(
+        '-sta',
+        help='Test Mystical Archive cards specifically',
+        action='store_true'
+    )
 
     args = parser.parse_args()
 
     main(
         out=args.out, name=args.name, size=args.size,
-        etched=args.etched, lands=args.lands, sld=args.sld
+        etched=args.etched, lands=args.lands,
+        sld=args.sld, sta=args.sta
     )

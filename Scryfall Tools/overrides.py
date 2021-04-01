@@ -633,6 +633,82 @@ _transform_cards_ixalan = {
     'Treasure Map': {'collector_number': '250', 'set': 'pxtc'},
 }
 
+_mystical_archive_collector_numbers = {
+    'Approach of the Second Sun': (1, 64),
+    'Day of Judgment': (2, 65),
+    'Defiant Strike': (3, 66),
+    'Divine Gambit': (4, 67),
+    'Ephemerate': (5, 68),
+    'Gift of Estates': (6, 69),
+    'Gods Willing': (7, 70),
+    'Mana Tithe': (8, 71),
+    'Revitalize': (9, 72),
+    'Swords to Plowshares': (10, 73),
+    'Teferi\'s Protection': (11, 74),
+    'Blue Sun\'s Zenith': (12, 75),
+    'Brainstorm': (13, 76),
+    'Compulsive Research': (14, 77),
+    'Counterspell': (15, 78),
+    'Memory Lapse': (16, 79),
+    'Mind\'s Desire': (17, 80),
+    'Negate': (18, 81),
+    'Opt': (19, 82),
+    'Strategic Planning': (20, 83),
+    'Tezzeret\'s Gambit': (21, 84),
+    'Time Warp': (22, 85),
+    'Whirlwind Denial': (23, 86),
+    'Agonizing Remorse': (24, 87),
+    'Crux of Fate': (25, 88),
+    'Dark Ritual': (26, 89),
+    'Demonic Tutor': (27, 90),
+    'Doom Blade': (28, 91),
+    'Duress': (29, 92),
+    'Eliminate': (30, 93),
+    'Inquisition of Kozilek': (31, 94),
+    'Sign in Blood': (32, 95),
+    'Tainted Pact': (33, 96),
+    'Tendrils of Agony': (34, 97),
+    'Village Rites': (35, 98),
+    'Chaos Warp': (36, 99),
+    'Claim the Firstborn': (37, 100),
+    'Faithless Looting': (38, 101),
+    'Grapeshot': (39, 102),
+    'Increasing Vengeance': (40, 103),
+    'Infuriate': (41, 104),
+    'Lightning Bolt': (42, 105),
+    'Mizzix\'s Mastery': (43, 106),
+    'Shock': (44, 107),
+    'Stone Rain': (45, 108),
+    'Thrill of Possibility': (46, 109),
+    'Urza\'s Rage': (47, 110),
+    'Abundant Harvest': (48, 111),
+    'Adventurous Impulse': (49, 112),
+    'Channel': (50, 113),
+    'Cultivate': (51, 114),
+    'Harmonize': (52, 115),
+    'Krosan Grip': (53, 116),
+    'Natural Order': (54, 117),
+    'Primal Command': (55, 118),
+    'Regrowth': (56, 119),
+    'Snakeskin Veil': (57, 120),
+    'Weather the Storm': (58, 121),
+    'Despark': (59, 122),
+    'Electrolyze': (60, 123),
+    'Growth Spiral': (61, 124),
+    'Lightning Helix': (62, 125),
+    'Putrefy': (63, 126)
+}
+_mystical_archive = {
+    'global': {
+        name: {'collector_number': str(cn), 'set': 'sta'}
+        for name, (cn, _) in _mystical_archive_collector_numbers.items()
+    },
+    'japanese': {
+        name: {'collector_number': str(cn), 'set': 'sta'}
+        for name, (_, cn) in _mystical_archive_collector_numbers.items()
+    }
+}
+
 cardname_identifier_overrides = {
     **_lands['basic']['znr'],
     **_lands['snow']['khm'],
@@ -657,6 +733,8 @@ cardname_identifier_overrides = {
     **_planeswalkers,
 
     **_transform_cards_ixalan,
+
+    **_mystical_archive['japanese'],
 
     **_mutatoes_showcase,
 
