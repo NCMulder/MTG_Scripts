@@ -8,7 +8,7 @@ verify_ssl = true
 [packages]
 bs4 = "~=0.0"
 dropbox = "~=11.0.0"
-pillow = "~=7.1"
+pillow = "~=8.3"
 requests = "~=2.23"
 
 [requires]
