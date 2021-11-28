@@ -258,14 +258,16 @@ def create_deck_images(card_size_text, log_card_names=True):
 
     print('\n\nSaving images...', flush=True)
     sf_urls = save_deck_images(sf_images)
-    df_urls = save_deck_images(df_images)
+    df_urls = save_deck_images(df_images, start=len(sf_urls) + 1)
+    print('', flush=True)
 
     return sf_urls, df_urls
 
 
-def save_deck_images(images):
+def save_deck_images(images, start=1):
     urls = []
     for i, image in enumerate(images):
+        print(f'Saving image {start + i}...', end='\r', flush=True)
         image_bytes = BytesIO()
         image.save(image_bytes, format='png')
         dropbox_url = upload_to_dropbox(
@@ -452,7 +454,7 @@ def create_deck_json_files(
                     'Transform': dfc_transform,
                     'Nickname': df_unique_cards[dfc]['name'],
                     'CustomDeck': df_customdeck,
-                    'CardID': 100
+                    'CardID': dfc
                 }
             else:
                 dfc_deck = {
