@@ -45,7 +45,9 @@ def parse_decklist(file):
             card_dict['collector_number'] = ma.group(4)
         # Otherwise, use the card name.
         else:
-            card_dict['name'] = ma.group(2)
+            # Fix DFC's
+            card_name = ma.group(2).split('//')[0].strip()
+            card_dict['name'] = card_name
         # In any case, if a set is specified, use this.
         if ma.group(3):
             card_dict['set'] = ma.group(3)
