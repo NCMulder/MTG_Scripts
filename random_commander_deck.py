@@ -31,6 +31,7 @@ def get_edhrec_average_deck(commander):
     random_deck_json = random_deck_resp.json()
     list_ugly = random_deck_json['description']
     list_cards = list_ugly.split('</a>')[2]
+    list_cards = list_cards.strip().replace('\n\n', '\n')
 
     decklist_raw = list_cards.split('\n')
     pattern = re.compile(r'(\d*) (.*)$')
@@ -43,7 +44,7 @@ def get_edhrec_average_deck(commander):
         print('The found decklist is incomplete')
         return None
 
-    return decklist_filtered
+    return list_cards
 
 
 def create_random_commander_deck(query='', verbose=False, deck_name=''):
@@ -64,11 +65,6 @@ def create_random_commander_deck(query='', verbose=False, deck_name=''):
     pf = project_config['Main'].get('deckname_prefix')
     deck_name = deck_name or f'{pf} {random_commander["name"].split(" //")[0]}'
 
-    deck_array = get_edhrec_average_deck(random_commander)
-
-    if not deck_array:
-        return None, ''
-
-    decklist = get_collection(deck_array)
+    decklist = get_edhrec_average_deck(random_commander)
 
     return decklist, deck_name
