@@ -2,6 +2,7 @@
 *.html
 *.ini
 *.csv
+.vscode/
 !config_default.ini
 
 # Byte-compiled / optimized / DLL files

@@ -1,16 +1,12 @@
-# Nielsch's MTG Scripts
-This is a collection of scripts I've been creating for Magic: The Gathering related tasks.
+# TTS MTG Scripts
+This is a collection of scripts we've been creating for playing Magic: The Gathering in Tabletop Simulator.
 
 ## Tabletop Simulator Deck Generator
-The bulk of the useful scripts are located in the [Scryfall Tools](Scryfall%20Tools) Folder. 
-I really should work on restructuring this whole thing but that's what you'll get for now.
 This tool takes a decklist, generates and uploads the card images to your Dropbox, 
 and creates a JSON file that Tabletop Simulator can read to import your deck.
 
 #### Setup
-First of all, if you want to run these scripts, you should get a [Dropbox API key](
-https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/
-) by creating an app choosing the Dropbox API, choosing "App Folder", and naming your app. 
+First of all, if you want to run these scripts, you should get a [Dropbox API key](https://dropbox.tech/developers/generate-an-access-token-for-your-own-account) by creating an app choosing the Dropbox API, choosing "App Folder", and naming your app. 
 Get your personal API key under `<appname> -> Settings -> OAuth2 -> Generated access token`, 
 copy the `config_default.ini` file, rename it to `config.ini` and place your API key in there.
 
@@ -122,4 +118,4 @@ Any additional arguments you pass add query specifiers to get your random comman
 If you encounter any bugs/issues/suggestions, [create an issue](https://github.com/NCMulder/MTG_Scripts/issues).
 
 ## Credit
-Thanks to [Marcanius](https://github.com/Marcanius) for adding printing preference functionality and enforcing a clear code standard.
+Thanks to [Marcanius](https://github.com/Marcanius) for adding printing preference functionality and loads of other functionality, and [Jorim](https://github.com/JorimWal) for adding limited pool generation functionality.
