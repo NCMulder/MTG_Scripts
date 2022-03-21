@@ -18,8 +18,13 @@ modes = [
 ]
 
 
-def decklist(args):
-    decks = parse_decklist(args.file)
+def decklist(args):    
+    # Get the main deck name
+    deck_name = os.path.splitext(os.path.basename(args.file.name))[0]
+    deck_list = args.file.read()
+
+    decks = parse_decklist(deck_name, deck_list)
+
     collected_decks = {}
     for deckname, decklist in decks.items():
         collected_decks[deckname] = get_collection(decklist)
@@ -28,21 +33,6 @@ def decklist(args):
         decks=collected_decks,
         path=args.out,
         card_size_text=args.size,
-    )
-
-
-def draft(args):
-    create_tts_mtg_decks(
-        decks=get_limited_pool(
-            set_code=args.code,
-            number_of_players=args.players,
-            packs_per_player=args.packs
-        ),
-        path=args.out,
-        card_size_text=args.size,
-        name=f'Draft Pool {args.code.upper()} ({date.today()})',
-        packs_per_player=args.packs,
-        log_card_names=False
     )
 
 
@@ -55,8 +45,14 @@ def random_commander(args):
     if not deck_list:
         return
 
+    decks = parse_decklist(deck_name, deck_list)
+
+    collected_decks = {}
+    for deckname, decklist in decks.items():
+        collected_decks[deckname] = get_collection(decklist)
+
     create_tts_mtg_decks(
-        decks={deck_name: deck_list},
+        decks=collected_decks,
         path=args.out,
         card_size_text=args.size,
     )
@@ -75,6 +71,22 @@ def sealed(args):
         packs_per_player=args.packs,
         log_card_names=False
     )
+
+
+def draft(args):
+    create_tts_mtg_decks(
+        decks=get_limited_pool(
+            set_code=args.code,
+            number_of_players=args.players,
+            packs_per_player=args.packs
+        ),
+        path=args.out,
+        card_size_text=args.size,
+        name=f'Draft Pool {args.code.upper()} ({date.today()})',
+        packs_per_player=args.packs,
+        log_card_names=False
+    )
+
 
 
 if __name__ == '__main__':

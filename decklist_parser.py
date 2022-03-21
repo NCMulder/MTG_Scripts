@@ -2,25 +2,18 @@
 # Returns seperate lists for main deck and sideboard.
 # List entries are tuples of card identifiers and count.
 
-import os
 import re
-
 import sys
 
 
-def parse_decklist(file):
-    # Get the main deck name
-    deck_name = os.path.splitext(os.path.basename(file.name))[0]
-
+def parse_decklist(deck_name, deck_list):
     # Start parsing the decklist
-    line = file.readline()
     decks = {}
     deck = []
     sideboard = False
-    while line:
+    for line in deck_list.split('\n'):
         # If the line is a comment, continue to the next line
         if line.startswith('//'):
-            line = file.readline()
             continue
 
         # The first empty line signifies the start of the sideboard
@@ -31,7 +24,6 @@ def parse_decklist(file):
                 deck_name += ' (sideboard)'
                 deck = []
                 sideboard = True
-            line = file.readline()
             continue
 
         # Match many types of decklist entries
@@ -53,7 +45,6 @@ def parse_decklist(file):
             card_dict['set'] = ma.group(3)
 
         deck.append((card_dict, count))
-        line = file.readline()
 
     # Add the final deck to the list
     decks[deck_name] = deck
